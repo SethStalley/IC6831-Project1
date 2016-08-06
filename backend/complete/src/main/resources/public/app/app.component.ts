@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgStyle} from '@angular/common';
 import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 
-// const URL = '/api/';
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+// static URL to send out file to;
+const URL = 'http://localhost:3002/sendVideo';
 
 @Component({
   selector: 'file-upload',
@@ -14,14 +14,16 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 export class FileUploder {
   public uploader:FileUploader = new FileUploader({url: URL});
   public hasBaseDropZoneOver:boolean = false;
-  public hasAnotherDropZoneOver:boolean = false;
 
+  //Constructor for file upload
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
+
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      var responsePath = JSON.parse(response);
+      console.log(response, responsePath);// the url will be in the response
+    };
   }
 
-  public fileOverAnother(e:any):void {
-    this.hasAnotherDropZoneOver = e;
-  }
 }
 
