@@ -1,5 +1,5 @@
 <style>
-    .my-drop-zone { border: dotted 3px lightgray; }
+    .my-drop-zone { border: dotted 3px lightgray; height: 30%;}
     .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
     .another-file-over-class { border: dotted 3px green; }
     html, body { height: 100%; }
@@ -7,19 +7,16 @@
 
 <div class="container">
 
-
     <div class="row">
 
         <div class="col-md-4">
-
-            <h3>Agregue Videos</h3>
 
             <div ng2FileDrop
                  [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
                  (fileOver)="fileOverBase($event)"
                  [uploader]="uploader"
-                 class="well my-drop-zone text-center">
-                Arastre el archivo aquí
+                 class="well my-drop-zone text-center h2">
+                <small>Arastre aquí el video por analizar</small>
             </div>
 
         </div>
@@ -50,17 +47,12 @@
                     </td>
                     <td class="text-center">
                         <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
                         <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
                     </td>
                     <td nowrap float="right">
                         <button type="button" class="btn btn-success btn-xs"
                                 (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                             <span class="glyphicon glyphicon-upload"></span> Subir y Analizar
-                        </button>
-                        <button type="button" class="btn btn-warning btn-xs"
-                                (click)="item.cancel()" [disabled]="!item.isUploading">
-                            <span class="glyphicon glyphicon-ban-circle"></span> Cancelar
                         </button>
                         <button type="button" class="btn btn-danger btn-xs"
                                 (click)="item.remove()">
@@ -76,3 +68,5 @@
     </div>
 
 </div>
+
+<ng2-toasty></ng2-toasty>

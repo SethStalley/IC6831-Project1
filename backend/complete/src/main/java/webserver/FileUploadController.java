@@ -1,26 +1,19 @@
 package webserver;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class FileUploadController {
@@ -31,23 +24,24 @@ public class FileUploadController {
 	
 
 	@RequestMapping(method = RequestMethod.POST, value = "/postFile")
+	@ResponseBody
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 								   RedirectAttributes redirectAttributes) {
-
+		
+		String message = "";
+				
 		if (!file.isEmpty()) {
 			try {
 				Files.copy(file.getInputStream(), Paths.get(ROOT, file.getOriginalFilename()));
-				redirectAttributes.addFlashAttribute("message",
-						"You successfully uploaded " + file.getOriginalFilename() + "!");
+				message=  "Se subio " + file.getOriginalFilename() + " de forma exitosa!";
 			} catch (IOException|RuntimeException e) {
-				redirectAttributes.addFlashAttribute("message", "Failued to upload " + file.getOriginalFilename() + " => " + e.getMessage());
+				message = "Hubo un problema subiendo " + file.getOriginalFilename() + " => " + e.getMessage();
 			}
 		} else {
-			redirectAttributes.addFlashAttribute("message", "Failed to upload " + file.getOriginalFilename() + " because it was empty");
+			message = "No se pudo subir " + file.getOriginalFilename() + " porque el archivo es vacio";
 		}
-
-		System.out.println(ROOT);
-		return "redirect:/";
+	
+		return message;
 	}
 
 }

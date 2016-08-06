@@ -13,6 +13,7 @@
     'rxjs':                       'node_modules/rxjs',
 
     'ng2-file-upload':            'node_modules/ng2-file-upload',
+    'ng2-toasty' :                'node_modules/ng2-toasty',
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -28,6 +29,10 @@
     'ng2-file-upload':            {
                                     main: 'ng2-file-upload.js',
                                     defaultExtension : 'js'
+                                  },
+     "ng2-toasty":                {
+                                    main: 'ng2-toasty.js',
+                                    defaultExtension: "js"
                                   },
  };
 
