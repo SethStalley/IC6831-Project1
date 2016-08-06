@@ -3,7 +3,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgStyle} from '@angular/commo
 import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 
 // static URL to send out file to;
-const URL = 'http://localhost:3002/sendVideo';
+const URL = 'http://localhost:8080/postFile';
 
 @Component({
   selector: 'file-upload',
@@ -19,10 +19,6 @@ export class FileUploder {
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
 
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      var responsePath = JSON.parse(response);
-      console.log(response, responsePath);// the url will be in the response
-    };
   }
 
 }
