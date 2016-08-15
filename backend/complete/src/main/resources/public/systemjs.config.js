@@ -14,6 +14,7 @@
 
     'ng2-file-upload':            'node_modules/ng2-file-upload',
     'ng2-toasty' :                'node_modules/ng2-toasty',
+    '@angular2-material':         'vendor/@angular2-material',
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
