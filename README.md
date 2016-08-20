@@ -1,2 +1,2 @@
 # ID Soccer Teams
-We apply pattern recognition and machine learning techniques to identify soccer players and their representing team from a raw video source. 
+We segment and classify soccer players from a video input to identify representing team. 
