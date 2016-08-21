@@ -1,4 +1,4 @@
-package modelo;
+package team_identifier;
 
 import java.io.FileNotFoundException;
 
@@ -11,8 +11,12 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
-import org.opencv.highgui.VideoCapture;
+
+//import org.opencv.highgui.VideoCapture;
+import org.opencv.videoio.VideoCapture;
+
 import org.opencv.imgproc.Imgproc;
+
 
 public class Reader {
 	private static final int CV_CAP_PROP_FRAME_COUNT = 7;

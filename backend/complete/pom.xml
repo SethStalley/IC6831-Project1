@@ -34,6 +34,11 @@
 		  <version>4.12</version>
 		  <scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.javaopencvbook</groupId>
+		    <artifactId>opencvjar</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
     </dependencies>
 
     <properties>
@@ -55,6 +60,10 @@
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
+	    <repository>
+	        <id>javaopencvbook</id>
+	        <url>https://raw.github.com/JavaOpenCVBook/code/maven2/</url>
+	    </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
