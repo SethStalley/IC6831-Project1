@@ -11,10 +11,7 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
-
-//import org.opencv.highgui.VideoCapture;
-import org.opencv.videoio.VideoCapture;
-
+import org.opencv.highgui.VideoCapture;
 import org.opencv.imgproc.Imgproc;
 
 
