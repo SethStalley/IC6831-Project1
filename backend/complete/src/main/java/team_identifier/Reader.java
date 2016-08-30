@@ -29,16 +29,19 @@ public class Reader {
 		
 		VideoCapture cap = new VideoCapture();
 		cap.open(url);
-
+		
+		if(!cap.isOpened()) {
+			throw new FileNotFoundException();
+		}
+		
 		int numFrames = (int) cap.get(CV_CAP_PROP_FRAME_COUNT);
-		  
-		for(int i = 1; i < numFrames; i++){
+		
+		for(int i = 1; i < numFrames && i < CV_CAP_PROP_FRAME_COUNT; i++){
 			Mat frame = new Mat();
 			
 			cap.read(frame);
 			frames.add(frame);
-			}	
-		
+		}	
 		convertToHsv();
 	}
 

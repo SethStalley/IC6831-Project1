@@ -13,17 +13,37 @@ public class OpencvTests {
 	String dir = System.getProperty("user.dir");
 	String ROOT  =  dir.substring(0, dir.lastIndexOf("backend")) + "dataFiles/";
 	String testVideoName = "test.mp4";
-	
+
 	@Test
 	public void loadVideo() {	
-	   Reader r = new Reader();
+	   boolean success;
 	   
 	   try {
-		   System.out.println(ROOT + testVideoName);
-		   Reader.readVideo(ROOT + testVideoName);
+		   Reader.readVideo(ROOT + testVideoName );
+		   success = true;
 	   } catch (Exception e) {
-		   e.printStackTrace();
-	   }   
+		   success = false;
+	   }  
+	   
+	   assertEquals(true, success);
+	}
+	
+	@Test
+	public void proccesVideo() {
+		boolean success;
+		
+		try {
+			Reader.readVideo(ROOT + testVideoName);
+			Reader.addMask();
+			Reader.normalize();
+	        success = true;
+	        
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			success = false;
+		}
+		
+		assertEquals(true, success);		
 	}
 
 }
