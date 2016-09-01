@@ -8,7 +8,6 @@ public class KMeans {
 		this.NUM_CLUSTERS = numClusters;
 	}
 	
-	
     /**
      * // Calculate Bhattacharyya distance.
      * @param X:Closely grouped Data
@@ -16,7 +15,7 @@ public class KMeans {
      * @return - double value.
      * @throws Exception 
      */
-    private static double distance(HSV X[], HSV U[]) throws Exception {
+    public static double distance(double X[], double U[]) throws Exception {
     	double sum = 0.0;
     	
     	if(X.length != U.length) {
@@ -24,7 +23,7 @@ public class KMeans {
     	}
     	
     	for(int i = 0; i< X.length; i++) {
-    		sum += Math.sqrt(Math.abs(X[i].value - U[i].value));
+    		sum += Math.sqrt(Math.abs(X[i] - U[i]));
     	}
     	
         return sum;

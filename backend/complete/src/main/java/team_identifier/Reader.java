@@ -42,7 +42,7 @@ public class Reader {
 			cap.read(frame);
 			frames.add(frame);
 		}	
-		convertToHsv();
+		convertFramesToHsv();
 	}
 
 	// Extract Hue Channel from HSV image
@@ -54,12 +54,17 @@ public class Reader {
 	}
 	
 	// Convert frames to HSV color model
-	public static void convertToHsv(){
+	public static void convertFramesToHsv(){
 		for(Mat frame:frames){
-			Mat framehsv = new Mat(frame.height(), frame.width(), frame.type());
-			Imgproc.cvtColor(frame, framehsv, Imgproc.COLOR_RGB2HSV);
-			framesHsv.add(getHueChannel(framehsv));
+			framesHsv.add(getHueChannel(convertRgb2Hsv(frame)));
 		}
+	}
+	
+	//Converts a RGB Mat to HSV
+	public static Mat convertRgb2Hsv(Mat frame) {
+		Mat frameHsv = new Mat(frame.height(), frame.width(), frame.type());
+		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
+		return frameHsv;
 	}
 	
 	// Get a binary mask of green pixels
