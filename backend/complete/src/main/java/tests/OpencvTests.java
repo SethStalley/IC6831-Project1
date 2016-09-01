@@ -2,14 +2,12 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 import org.opencv.core.Core;
 import org.junit.Before;
 import org.junit.Test;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
+import org.opencv.imgproc.Imgproc;
 
 import team_identifier.Reader;
 
@@ -43,15 +41,20 @@ public class OpencvTests {
 	public void rgbToHsv() {
 		Mat rgb = Highgui.imread(ROOT + "rgb.png");
 		Mat hsv = Reader.convertRgb2Hsv(rgb);
+		//Highgui.imwrite(ROOT + "hsv.png", hsv);
 		
 		Mat testHsv = Highgui.imread(ROOT + "hsv.png");
-		assertEquals(compareMat(rgb, hsv), true);		
+		assertEquals(compareMat(testHsv, hsv), true);		
 	}
 	
 	
 	//Checks if two mats are identical
 	private boolean compareMat(Mat img1, Mat img2) {
 		Mat temp = new Mat(); 
+		
+		Imgproc.cvtColor(img1, img1, Imgproc.COLOR_RGB2GRAY);
+		Imgproc.cvtColor(img2, img2, Imgproc.COLOR_RGB2GRAY);
+		
 	    Core.compare(img1, img2, temp, 1);	    
 	    return Core.countNonZero(temp) == 0;
 	}
