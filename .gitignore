@@ -1,5 +1,6 @@
 videos/*
-
+.recommenders/*
+.metadata/*
 videos/uploaded/gs-rest-service-master.zip
 
 videos/uploaded/gs-rest-service-master.zip

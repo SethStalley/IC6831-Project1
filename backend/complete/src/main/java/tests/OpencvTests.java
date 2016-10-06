@@ -47,7 +47,6 @@ public class OpencvTests {
 		assertEquals(compareMat(testHsv, hsv), true);		
 	}
 	
-	
 	//Checks if two mats are identical
 	private boolean compareMat(Mat img1, Mat img2) {
 		Mat temp = new Mat(); 
