@@ -5,5 +5,4 @@ import { FileUploder } from './file-uploader.component';
 import { ShowResult } from './show-result.component';
 
 bootstrap(App);
-bootstrap(ShowResult);
 bootstrap(FileUploder);
