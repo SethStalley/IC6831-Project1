@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="team_identifier.Video"/>
 <fullyQualifiedTypeName name="team_identifier.ImShow"/>
 <fullyQualifiedTypeName name="org.opencv.core.MatOfPoint"/>
 <fullyQualifiedTypeName name="team_identifier.ImageProcessor"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.opencv.core.Mat"/>
+<fullyQualifiedTypeName name="team_identifier.Video"/>
 </qualifiedTypeNameHistroy>

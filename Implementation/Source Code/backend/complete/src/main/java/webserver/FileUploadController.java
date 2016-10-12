@@ -18,8 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 //import com.atul.JavaOpenCV.Imshow;
 
-import team_identifier.Reader;
-
 
 @Controller
 public class FileUploadController {
@@ -59,10 +57,10 @@ public class FileUploadController {
 	
 	
 	private void proccessVideo(String videoPath) {
-		try {
-			Reader.readVideo(videoPath);
-			Reader.addMask();
-			Reader.normalize();
+	/*	try {
+		//	Reader.readVideo(videoPath);
+		//	Reader.addMask();
+		//	Reader.normalize();
 			
 		    //  for(Mat frame: Reader.getMasks()){
 	        //Imshow im = new Imshow("Display");
@@ -71,7 +69,7 @@ public class FileUploadController {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 
 }
