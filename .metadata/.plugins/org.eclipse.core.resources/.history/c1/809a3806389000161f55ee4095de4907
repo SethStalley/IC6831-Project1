@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+import org.opencv.core.Mat;
+
+import team_identifier.Video;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+	    Video video = new Video("/Users/lucychaves/Desktop/cut1_360.mp4"); 
+	    ArrayList<Mat> frames = video.readVideo();
+	      
+	      System.out.println("Frames: "+ frames.size());
+	    /*  
+	      Reader.addMask();
+	      Reader.normalize();
+
+	      //  for(Mat frame: Reader.getMasks()){
+	          Imshow im = new Imshow("Display");
+	          im.showImage(Reader.truncate(Reader.stdfilt(Reader.getNormalizedHsv().get(0))));
+
+	      //    Imshow im2 = new Imshow("Display");
+	      //    im2.showImage(Reader.getFramesHsv().get(0));
+	       // }
+	        }
+	       */
+	}
+
+}
