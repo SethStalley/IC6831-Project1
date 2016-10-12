@@ -6,6 +6,7 @@ import org.opencv.core.Core;
 import org.junit.Before;
 import org.junit.Test;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
@@ -41,10 +42,17 @@ public class OpencvTests {
 	public void rgbToHsv() {
 		Mat rgb = Highgui.imread(ROOT + "rgb.png");
 		Mat hsv = Reader.convertRgb2Hsv(rgb);
-		//Highgui.imwrite(ROOT + "hsv.png", hsv);
 		
 		Mat testHsv = Highgui.imread(ROOT + "hsv.png");
 		assertEquals(compareMat(testHsv, hsv), true);		
+	}
+	
+	@Test public void dilate() {
+		Mat img = Highgui.imread(ROOT + "rgb.png");
+		Mat testDilated = Highgui.imread(ROOT + "dilated.png");
+		Mat dilated = Reader.dilate(img);
+    	    
+	    assertEquals(compareMat(testDilated,dilated), true);  
 	}
 	
 	
