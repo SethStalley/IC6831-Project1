@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.atul.JavaOpenCV.Imshow;
+//import com.atul.JavaOpenCV.Imshow;
 
 import team_identifier.Reader;
 
@@ -65,8 +65,8 @@ public class FileUploadController {
 			Reader.normalize();
 			
 		    //  for(Mat frame: Reader.getMasks()){
-	        Imshow im = new Imshow("Display");
-	        im.showImage(Reader.truncate(Reader.stdfilt(Reader.getNormalizedHsv().get(0))));
+	        //Imshow im = new Imshow("Display");
+	        //im.showImage(Reader.truncate(Reader.stdfilt(Reader.getNormalizedHsv().get(0))));
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
