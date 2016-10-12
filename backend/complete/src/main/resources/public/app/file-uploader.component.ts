@@ -9,17 +9,21 @@ const URL = 'http://localhost:8080/postFile';
 @Component({
   selector: 'file-upload',
   templateUrl: 'app/file-uploader.html',
-  directives: [FILE_UPLOAD_DIRECTIVES, NgClass, NgStyle, CORE_DIRECTIVES, FORM_DIRECTIVES,
-              ]
+  directives: [FILE_UPLOAD_DIRECTIVES, NgClass, NgStyle, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 
 export class FileUploder {
-  public uploader:FileUploader = new FileUploader({url: URL});
+  public uploader:FileUploader = new FileUploader({url:URL});
   public hasBaseDropZoneOver:boolean = false;
 
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
+
+  constructor() {
+
+  }
+
 
   // constructor(private toastyService:ToastyService) {
   //    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
