@@ -1,0 +1,143 @@
+package team_identifier;
+
+import java.util.ArrayList;
+
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfDouble;
+import org.opencv.core.Rect;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
+public class PlayerDetector extends GeneralDetector{
+	private ArrayList<Mat> processedPlayers;
+	
+	public PlayerDetector(){
+		this.processedPlayers = new ArrayList<Mat>();
+	}
+	
+	/**
+	* Deletes all values below that value.
+	* @param X: 
+	* @return -
+	*/	
+	@Override
+	public void Detect(ArrayList<Mat> frames) {		
+		for(Mat frame:frames){
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+			temp = normalizeImage(temp);
+		    temp = imagenVarianza(temp);
+		//    temp = dilate(temp);
+		 //   temp = truncate(temp);
+		 //   temp = im2bw(temp);
+			this.processedPlayers.add(temp);
+		}
+	
+	}
+
+
+		/**
+		* Deletes all values below that value.
+		* @param X: 
+		* @return -
+		*/	  	  
+	  private Mat im2bw(Mat image) {
+		    Mat clone = image.clone();
+		    clone.convertTo(clone, CvType.CV_8UC1);
+		    double umbral = Imgproc.threshold(clone, clone, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
+		    
+		    Mat res = new Mat();
+		    Imgproc.threshold(res, res, umbral, 255, Imgproc.THRESH_BINARY);
+		    return clone;
+	  }
+	
+	/**
+	* 
+	* @param X: 
+	* @return -
+	*/
+	private Mat normalizeImage(Mat image) {
+		 Mat clone = image.clone();
+		 Core.normalize(clone, clone, 0, 255, Core.NORM_MINMAX);
+		 return clone;
+	}
+
+
+	/**
+	* Calculates local variance.
+	* @param X: H channel of HSV (Mat)
+	* @return - Image corresponding to the local variance
+	*/	
+	private Mat stdfilt(Mat image) {
+		  Mat image32f = new Mat();
+		  image.convertTo(image32f, CvType.CV_32F);
+
+		  Mat mu = new Mat();
+		  Mat mu2 = new Mat();
+		  Imgproc.blur(image32f, mu, new Size(3, 3));
+	      Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
+
+	      Mat sigma = new Mat();
+	      Mat src = new Mat();
+	      
+	      Core.subtract(mu2, mu.mul(mu), src);
+	      Core.sqrt(src, sigma);
+	      
+	      Mat image2 = new Mat();
+		  sigma.convertTo(image2, image.type());
+	      
+	      return image2;
+	  }	
+
+	public static Mat imagenVarianza(Mat imagen){
+		MatOfDouble mean = new MatOfDouble();
+		MatOfDouble desviacion = new MatOfDouble();
+		int filas=imagen.rows();
+		int columnas=imagen.cols();
+		Mat resultado= new Mat(filas,columnas,CvType.CV_32F);
+		Rect ventana;
+		Mat ImagenCortada;
+		int ancho=7;//ancho predeterminado se puede cambiar para optimizar
+		int alto=8;//alto predeterminado se puede cambiar para optimizar
+		int anchoAux,altoAux;
+		for (int fila=0;fila<filas;fila++){
+			for(int columna=0;columna<columnas;columna++){
+				anchoAux=ancho;
+				altoAux=alto;
+				if(ancho+columna>columnas){
+					anchoAux=columnas-columna;
+				}
+				if(alto+fila>filas){
+					altoAux=filas-fila;
+				}
+				ventana= new Rect(columna,fila,anchoAux,altoAux);
+				ImagenCortada = new Mat(imagen,ventana);
+				Core.meanStdDev(ImagenCortada, mean, desviacion);
+				
+				double[] desviacionCanales=desviacion.get(0,0);
+				int valor= (int)(Math.pow(desviacionCanales[0],2))%255;
+				double[] canalesResultado = new double[]{valor,0,0};
+				resultado.put(fila,columna,canalesResultado);
+			}			
+		}
+		return resultado;
+	}
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat truncate(Mat image){
+		Mat result = new Mat(image.rows(), image.cols(), image.type());
+
+        result = image;
+        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
+        return result;
+	}
+	
+	public ArrayList<Mat> getProcessedPlayers(){
+		return this.processedPlayers;
+	}
+
+}

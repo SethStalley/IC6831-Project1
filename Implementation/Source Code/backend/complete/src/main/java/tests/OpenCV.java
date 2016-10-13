@@ -6,7 +6,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.bytedeco.javacpp.opencv_core.Mat;
-import org.bytedeco.javacpp.opencv_videoio.VideoCapture;
+
+
 import org.junit.Test;
 
 
@@ -24,7 +25,7 @@ public class OpenCV {
 		
 		Video video = new Video(testVid);
 		try {
-			result = !video.readVideo().get(0).isNull();
+			result = !video.readVideo().get(0).empty();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

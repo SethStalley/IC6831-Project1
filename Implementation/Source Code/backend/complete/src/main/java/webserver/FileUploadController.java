@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static java.nio.file.StandardCopyOption.*;
 
 import org.bytedeco.javacpp.opencv_core.Mat;
-//import org.opencv.core.Mat;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team_identifier.Video;
 
-//import com.atul.JavaOpenCV.Imshow;
 
 
 @Controller
