@@ -16,7 +16,6 @@ public class Video {
 		this.path = path;
 	}
 	
-	
 	/**
      * Read a video and divides it into frames
      * @return - List of frames (Mat)
@@ -42,7 +41,8 @@ public class Video {
 			cap.read(frame);
 			frames.add(frame);
 		}	
-		return frames;	
+		//this.frames = frames;	
+		return frames;
 	}
 	
 	

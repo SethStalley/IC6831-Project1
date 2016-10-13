@@ -908,3 +908,273 @@
 2016-10-12 17:33:08,103 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
 2016-10-12 17:33:08,106 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-10-12 17:33:08,106 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:22:00,030 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:22:00,033 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:22:00,035 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:22:00,038 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:22:00,038 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:23:34,923 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:23:34,924 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:23:34,926 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:23:34,929 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:23:34,929 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:24:02,631 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:24:02,633 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:24:02,635 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:24:02,639 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:24:02,639 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:24:39,347 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:24:39,348 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:24:39,349 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:24:39,352 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:24:39,352 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:24:49,092 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:24:49,093 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:24:49,094 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:24:49,096 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:24:49,097 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:28:24,648 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:28:24,650 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:28:24,651 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:28:24,655 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:28:24,655 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:28:38,834 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:28:38,835 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:28:38,836 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:28:38,840 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:28:38,841 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:47:28,847 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:47:28,850 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:47:28,852 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:47:28,855 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:47:28,856 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:47:50,578 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:47:50,580 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:47:50,582 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:47:50,585 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:47:50,585 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:48:13,777 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:48:13,779 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:48:13,781 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:48:13,785 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:48:13,786 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:48:20,435 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:48:20,436 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:48:20,439 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:48:20,443 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:48:20,443 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:49:53,810 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:49:53,811 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:49:53,812 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:49:53,814 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:49:53,814 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:53:57,320 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:53:57,322 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:53:57,324 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:53:57,327 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:53:57,327 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:58:04,247 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:58:04,249 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:58:04,250 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:58:04,252 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:58:04,253 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:59:09,772 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:59:09,773 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:59:09,774 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:59:09,778 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:59:09,779 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 18:59:56,522 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:59:56,525 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 18:59:56,527 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 18:59:56,531 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 18:59:56,531 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:00:44,007 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:00:44,008 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:00:44,010 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:00:44,013 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:00:44,013 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:01:57,306 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:01:57,307 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:01:57,309 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:01:57,311 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:01:57,311 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:20:21,582 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:20:21,619 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:20:21,621 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:20:21,624 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:20:21,625 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:20:35,887 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:20:35,888 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:20:35,892 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:20:35,897 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:20:35,897 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:23:44,292 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:23:44,293 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:23:44,294 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:23:44,297 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:23:44,298 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:23:48,648 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:23:48,650 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:23:48,651 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:23:48,654 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:23:48,655 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:23:58,307 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:23:58,307 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:23:58,309 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:23:58,313 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:23:58,313 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:24:38,751 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:24:38,753 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:24:38,755 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:24:38,758 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:24:38,758 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:31:58,275 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:31:58,276 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:31:58,278 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:31:58,280 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:31:58,281 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:32:46,750 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:32:46,752 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:32:46,753 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:32:46,759 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:32:46,759 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:32:58,441 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:32:58,442 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:32:58,443 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:32:58,445 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:32:58,445 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:33:11,155 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:33:11,155 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:33:11,156 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:33:11,158 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:33:11,158 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:37:28,286 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:37:28,288 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:37:28,290 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:37:28,293 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:37:28,293 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:38:04,691 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:04,692 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:38:04,694 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:38:04,697 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:04,697 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:38:16,739 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:16,902 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:38:16,903 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:38:16,905 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:16,905 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:38:47,675 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:47,676 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:38:47,678 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:38:47,681 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:47,681 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:38:51,428 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:51,429 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:38:51,430 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:38:51,432 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:38:51,433 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:39:19,837 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:39:19,839 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:39:19,840 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:39:19,843 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:39:19,843 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:40:09,078 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:09,080 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:40:09,082 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:40:09,086 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:09,086 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:40:21,457 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:21,458 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:40:21,459 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:40:21,462 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:21,462 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:40:29,592 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:29,593 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:40:29,595 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:40:29,599 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:29,599 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:40:57,941 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:57,942 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:40:57,944 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:40:57,947 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:40:57,947 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:41:03,536 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:41:03,537 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:41:03,539 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:41:03,540 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:41:03,541 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:47:00,639 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:47:00,663 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:47:00,664 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:47:00,666 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:47:00,667 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:49:04,202 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:49:04,203 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:49:04,204 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:49:04,206 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:49:04,206 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:49:42,813 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:49:42,814 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:49:42,816 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:49:42,819 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:49:42,819 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:54:11,724 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:54:11,726 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:54:11,727 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:54:11,729 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:54:11,729 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:54:22,845 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:54:22,846 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:54:22,847 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:54:22,849 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:54:22,850 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:55:17,876 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:55:17,878 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:55:17,880 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:55:17,882 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:55:17,882 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:56:09,321 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:56:09,322 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:56:09,324 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:56:09,327 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:56:09,327 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:56:13,801 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:56:13,802 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:56:13,804 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:56:13,806 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:56:13,806 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:57:55,420 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:57:55,421 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:57:55,423 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:57:55,426 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:57:55,427 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:58:12,283 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:58:12,284 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:58:12,285 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:58:12,287 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:58:12,287 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:58:17,405 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:58:17,406 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:58:17,407 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:58:17,409 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:58:17,409 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:58:21,863 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:58:21,863 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:58:21,865 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:58:21,866 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:58:21,867 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:59:02,075 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:59:02,076 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:59:02,078 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:59:02,080 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:59:02,080 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 19:59:34,351 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:59:34,352 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 19:59:34,353 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 19:59:34,354 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 19:59:34,355 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources
+2016-10-12 20:00:10,873 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 20:00:10,874 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-10-12 20:00:10,876 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 25 resources
+2016-10-12 20:00:10,878 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-10-12 20:00:10,879 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/lucychaves/Documents/SoccerTeamAnalysis/Implementation/Source Code/backend/complete/src/test/resources

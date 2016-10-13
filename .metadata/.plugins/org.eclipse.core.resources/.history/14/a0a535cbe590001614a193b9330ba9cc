@@ -1,0 +1,5 @@
+package team_identifier;
+
+public class PlayerDetector extends GeneralDetector{
+
+}

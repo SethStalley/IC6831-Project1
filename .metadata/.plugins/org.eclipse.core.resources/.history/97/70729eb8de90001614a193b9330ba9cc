@@ -1,0 +1,5 @@
+package team_identifier;
+
+public class SoccerFieldDetector extends GeneralDetector{
+
+}
