@@ -1,5 +1,4 @@
-package team_identifier;
-
+package teamidentifier;
 
 /*
  * Author: ATUL
@@ -30,6 +29,8 @@ import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
+/**
+ */
 public class Imshow {
 
 	public JFrame Window;
@@ -39,6 +40,10 @@ public class Imshow {
 	private Boolean SizeCustom;
 	private int Height, Width;
 
+	/**
+	 * Constructor for Imshow.
+	 * @param title String
+	 */
 	public Imshow(String title) {
 		Window = new JFrame();
 		image = new ImageIcon();
@@ -52,6 +57,12 @@ public class Imshow {
 		setCloseOption(0);
 	}
 
+	/**
+	 * Constructor for Imshow.
+	 * @param title String
+	 * @param height int
+	 * @param width int
+	 */
 	public Imshow(String title, int height, int width) {
 		SizeCustom = true;
 		Height = height;
@@ -69,6 +80,10 @@ public class Imshow {
 
 	}
 
+	/**
+	 * Method showImage. 
+	 * @param img Mat
+	 */
 	public void showImage(Mat img) {
 		if (SizeCustom) {
 			Imgproc.resize(img, img, new Size(Height, Width));
@@ -92,6 +107,13 @@ public class Imshow {
 	// CREDITS TO DANIEL: http://danielbaggio.blogspot.com.br/ for the improved
 	// version !
 
+	/**
+	 * Method toBufferedImage.
+	 * 
+	 * @param m
+	 *            Mat
+	 * @return BufferedImage
+	 */
 	public BufferedImage toBufferedImage(Mat m) {
 		int type = BufferedImage.TYPE_BYTE_GRAY;
 		if (m.channels() > 1) {
@@ -101,8 +123,7 @@ public class Imshow {
 		byte[] b = new byte[bufferSize];
 		m.get(0, 0, b); // get all the pixels
 		BufferedImage image = new BufferedImage(m.cols(), m.rows(), type);
-		final byte[] targetPixels = ((DataBufferByte) image.getRaster()
-				.getDataBuffer()).getData();
+		final byte[] targetPixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
 		System.arraycopy(b, 0, targetPixels, 0, b.length);
 		return image;
 
@@ -110,6 +131,11 @@ public class Imshow {
 
 	// Thanks to sutr90 for reporting the issue : https://github.com/sutr90
 
+	/**
+	 * Method setCloseOption.
+	 * 
+	 * @param option int
+	 */
 	public void setCloseOption(int option) {
 
 		switch (option) {
@@ -137,9 +163,8 @@ public class Imshow {
 		Window.setResizable(resizable);
 	}
 
-
-	// Thanks to Jan Monterrubio for additional static methods for viewing images. 
-
+	// Thanks to Jan Monterrubio for additional static methods for viewing
+	// images.
 
 	/**
 	 * Displays the given {@link Mat} in a new instance of {@link Imshow}
@@ -148,8 +173,7 @@ public class Imshow {
 	 *            the {@link Mat} to display
 	 */
 	public static void show(Mat mat) {
-		show(mat, new Dimension(mat.rows(), mat.cols()), "", false,
-				WindowConstants.EXIT_ON_CLOSE);
+		show(mat, new Dimension(mat.rows(), mat.cols()), "", false, WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	/**
@@ -162,8 +186,7 @@ public class Imshow {
 	 *            the title for the frame
 	 */
 	public static void show(Mat mat, String frameTitle) {
-		show(mat, new Dimension(mat.rows(), mat.cols()), frameTitle, false,
-				WindowConstants.EXIT_ON_CLOSE);
+		show(mat, new Dimension(mat.rows(), mat.cols()), frameTitle, false, WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	/**
@@ -179,8 +202,7 @@ public class Imshow {
 	 *            whether the frame should be resizable or not
 	 */
 	public static void show(Mat mat, String frameTitle, boolean resizable) {
-		show(mat, new Dimension(mat.rows(), mat.cols()), frameTitle, resizable,
-				WindowConstants.EXIT_ON_CLOSE);
+		show(mat, new Dimension(mat.rows(), mat.cols()), frameTitle, resizable, WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	/**
@@ -221,11 +243,11 @@ public class Imshow {
 	 *            the size for the frame
 	 * @param frameTitle
 	 *            the title for the frame
+	 * @param resizable
+	 *            boolean
 	 */
-	public static void show(Mat mat, Dimension frameSize, String frameTitle,
-			boolean resizable) {
-		show(mat, frameSize, frameTitle, resizable,
-				WindowConstants.EXIT_ON_CLOSE);
+	public static void show(Mat mat, Dimension frameSize, String frameTitle, boolean resizable) {
+		show(mat, frameSize, frameTitle, resizable, WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	/**
@@ -244,8 +266,7 @@ public class Imshow {
 	 * @param closeOperation
 	 *            the constant for the default close operation of the frame
 	 */
-	public static void show(Mat mat, Dimension frameSize, String frameTitle,
-			boolean resizable, int closeOperation) {
+	public static void show(Mat mat, Dimension frameSize, String frameTitle, boolean resizable, int closeOperation) {
 		Imshow frame = new Imshow(frameTitle, frameSize.height, frameSize.width);
 		frame.setResizable(resizable);
 
