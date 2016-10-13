@@ -6,7 +6,6 @@ import org.opencv.core.Core;
 import org.junit.Before;
 import org.junit.Test;
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 

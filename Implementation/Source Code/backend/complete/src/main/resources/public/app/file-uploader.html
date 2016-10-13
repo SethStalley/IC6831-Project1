@@ -21,7 +21,7 @@
 
         </div>
 
-        <div class="col-md-8" style="margin-bottom: 40px">
+        <div class="col-md-8">
 
             <h3>Videos por Analizar</h3>
             <p>Cantidad: {{ uploader?.queue?.length }}</p>
@@ -63,17 +63,22 @@
                 </tbody>
             </table>
 
-            <!--Show Video-->
-            <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video autoplay loop class="embed-responsive-item">
-                    <!--<source src="../videos/test.mp4" type="video/mp4">-->
-                </video>
-            </div>
-
         </div>
 
     </div>
 
+
+    
+
 </div>
 
-<ng2-toasty></ng2-toasty>
+
+<div class="container">
+
+    <!--Show Video-->
+    <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video autoplay loop
+         src="../videos/{{ fileName }}"></video>
+    </div>
+
+</div>
