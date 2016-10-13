@@ -22,65 +22,22 @@ public class ImageProcessor {
     	
 	public ArrayList<Mat> process(){
 		ArrayList<Mat> processedFrames = new ArrayList<Mat>();
-		
 		for(Mat frame:frames){
-			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
-			temp = getRange(temp); 
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); // Convierte a HSV y obtiene el canal H
+			temp = getRange(temp); // Obtiene máscara binaria de pixeles verdosos
 			temp = dilate(temp);
 			temp = imfill(temp);
-			temp = bwareopen(temp);
+			temp = bwareaopen(temp);
 			processedFrames.add(temp);
 		}
 		
 		return processedFrames;
 	}
 	
-	  
-	/**
-   * Convert RGB Mat to HSV
-   * @param X: RGB Image (Mat)
-   * @return - HSV Image (Mat)
-   */
-	public Mat convertRgb2Hsv(Mat frame) {
-		Mat frameHsv = new Mat(frame.height(), frame.width(), frame.type());
-		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
-		return frameHsv;
-	}
-	
-	/**
-   * Extract Hue Channel from HSV image
-   * @param X: HSV Image (Mat)
-   * @return - Hue Channel of the image (Mat)
-   */
-	public Mat getHueChannel(Mat hsv){
-		List<Mat> channels = new Vector<Mat>();
-		Core.split(hsv, channels);
-		
-		return channels.get(0);
-	}
-		
-	/**
-   * Creates a binary mask of green pixels of an image.
-   * @param X: Hue Channel of a HSV Image.
-   * @return - A mask of green pixels (Mat).
-   */
-	public Mat getRange(Mat image){
-		Mat mask = new Mat();
-		
-		Scalar lowerGreen = new Scalar(18, 100, 50);
-		Scalar upperGreen = new Scalar(93, 255, 255);
-
-		Core.inRange(image, lowerGreen, upperGreen, mask);
-		
-		return mask;		
-	}
-	
-	// Field Detector 
-	
 	/**
      * Find and fill the contours of the players in the field.
-     * @param: Image to be filled (Mat).
-     * @return - Image with the holes filled (Mat).
+     * @param X: A mask of green pixels (Mat).
+     * @return - A mask of green pixels without holes (Mat).
      */
 	public Mat imfill(Mat mask){
 		Mat result, hierarchy, destiny;
@@ -92,7 +49,7 @@ public class ImageProcessor {
 		Core.bitwise_not(mask, result);
 		Imgproc.findContours(result, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 		
-		for(MatOfPoint contour:contours){
+		for(MatOfPoint contour : contours){
 			ArrayList<MatOfPoint> list = new ArrayList<>();
 			list.add(contour);
 			Imgproc.drawContours(result, list, 0, new Scalar(255),-1);
@@ -102,31 +59,65 @@ public class ImageProcessor {
 	}
 	
 	/**
-     * Fill small spurious regions 
-     * @param X: Image to be filled (Mat).
-     * @return - Image with small regions filled (Mat).
+     * Fill the holes of the players in the mask
+     * @param X: A mask of green pixels (Mat).
+     * @return - A mask of green pixels without holes (Mat).
      */
-	public Mat bwareopen(Mat mask){
+	public Mat bwareaopen(Mat mask){
 		Core.bitwise_not(mask, mask);
 		Mat result = imfill(mask);
 		Core.bitwise_not(result, result);
 		return result;
 	}
 	
+	  private Mat fillEspuriousRegions(Mat image) {
+		    Mat invertedImage = new Mat();
+		    Mat res = new Mat();
+		    
+		    Core.bitwise_not((Mat) image, invertedImage);
+		    res = bwareaopen(invertedImage);
+		    Core.bitwise_not((Mat) res, res);
+		    
+		    return res;
+		  }
+	  
 	/**
-     * 
-     * @param X: 
-     * @return -
+     * Convert RGB Mat to HSV
+     * @param X: RGB Image (Mat)
+     * @return - HSV Image (Mat)
      */
-	public Mat dilate(Mat hsv){
-		int dilation_size = 2;
-		Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
+	public Mat convertRgb2Hsv(Mat frame) {
+		Mat frameHsv = new Mat(frame.height(), frame.width(), frame.type());
+		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
+		return frameHsv;
+	}
+	
+	/**
+     * Extract Hue Channel from HSV image
+     * @param X: HSV Image (Mat)
+     * @return - Hue Channel of the image (Mat)
+     */
+	public Mat getHueChannel(Mat hsv){
+		List<Mat> channels = new Vector<Mat>();
+		Core.split(hsv, channels);
 		
-		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
-        Imgproc.dilate(hsv, result, kernel);
-    
-        return result;
+		return channels.get(0);
+	}
+		
+	/**
+     * Creates a binary mask of green pixels of an image.
+     * @param X: Hue Channel of a HSV Image.
+     * @return - A mask of green pixels (Mat).
+     */
+	public Mat getRange(Mat image){
+		Mat mask = new Mat();
+		
+		Scalar lowerGreen = new Scalar(18, 100, 50);
+		Scalar upperGreen = new Scalar(93, 255, 255);
 
+		Core.inRange(image, lowerGreen, upperGreen, mask);
+		
+		return mask;		
 	}
 	
 	// Soccer Players Detection
@@ -191,5 +182,14 @@ public class ImageProcessor {
 	}
 	
 	
+	public Mat dilate(Mat hsv){
+		int dilation_size = 2;
+		Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
+		
+		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
+        Imgproc.dilate(hsv, result, kernel);
+    
+        return result;
 
+	}
 }

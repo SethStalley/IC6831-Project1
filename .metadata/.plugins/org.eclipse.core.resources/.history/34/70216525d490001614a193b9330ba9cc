@@ -75,12 +75,10 @@ public class ImageProcessor {
 		return mask;		
 	}
 	
-	// Field Detector 
-	
 	/**
      * Find and fill the contours of the players in the field.
-     * @param: Image to be filled (Mat).
-     * @return - Image with the holes filled (Mat).
+     * @param X: A mask of green pixels (Mat).
+     * @return - A mask of green pixels without holes (Mat).
      */
 	public Mat imfill(Mat mask){
 		Mat result, hierarchy, destiny;
@@ -102,31 +100,15 @@ public class ImageProcessor {
 	}
 	
 	/**
-     * Fill small spurious regions 
-     * @param X: Image to be filled (Mat).
-     * @return - Image with small regions filled (Mat).
+     * Fill the holes of the players in the mask
+     * @param X: A mask of green pixels (Mat).
+     * @return - A mask of green pixels without holes (Mat).
      */
 	public Mat bwareopen(Mat mask){
 		Core.bitwise_not(mask, mask);
 		Mat result = imfill(mask);
 		Core.bitwise_not(result, result);
 		return result;
-	}
-	
-	/**
-     * 
-     * @param X: 
-     * @return -
-     */
-	public Mat dilate(Mat hsv){
-		int dilation_size = 2;
-		Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
-		
-		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
-        Imgproc.dilate(hsv, result, kernel);
-    
-        return result;
-
 	}
 	
 	// Soccer Players Detection
@@ -191,5 +173,14 @@ public class ImageProcessor {
 	}
 	
 	
+	public Mat dilate(Mat hsv){
+		int dilation_size = 2;
+		Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
+		
+		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
+        Imgproc.dilate(hsv, result, kernel);
+    
+        return result;
 
+	}
 }
