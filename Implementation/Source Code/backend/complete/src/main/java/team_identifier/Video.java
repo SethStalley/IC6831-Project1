@@ -4,8 +4,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.highgui.VideoCapture;
+//import org.opencv.core.Mat;
+
+//import org.opencv.core.Size;
+import org.bytedeco.javacpp.opencv_core.Mat;
+import org.bytedeco.javacpp.opencv_core.Size;
+import org.bytedeco.javacpp.opencv_videoio.*;
+//import org.opencv.highgui.*;;
+
 
 public class Video {
 	// private String videoId;
@@ -22,7 +28,6 @@ public class Video {
      * @throws FileNotFoundException 
      */
 	public ArrayList<Mat> readVideo() throws FileNotFoundException{
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		
 		ArrayList<Mat> frames  = new ArrayList<Mat>();
 		
@@ -36,13 +41,31 @@ public class Video {
 		int numFrames = (int) cap.get(CV_CAP_PROP_FRAME_COUNT);
 		
 		for(int i = 0; i < numFrames; i++){
-			Mat frame = new Mat();
+			Mat mat = new Mat();
 			
-			cap.read(frame);
-			frames.add(frame);
+			cap.read(mat);
+			frames.add(mat);
 		}	
 		//this.frames = frames;	
 		return frames;
+	}
+	
+	/**
+	 * Writes frames as to an mp4 video.
+	 * @Input - ArrayList<Mat> of frames to write
+	 * @Input - String file name. Name of stored video file.
+	 */
+	public void WriteVideo(ArrayList<Mat> mats, String outputFile) {
+		int fourcc = VideoWriter.fourcc((byte)'a', (byte)'v', (byte)'c', (byte)'1');
+		VideoWriter videoWriter = new VideoWriter(outputFile, fourcc,20.0,mats.get(0).size(),true);
+		
+		for(Mat mat : mats) {
+			videoWriter.write(mat);
+			mat.release();
+		}
+		
+		videoWriter.release();
+		videoWriter.close();
 	}
 	
 	

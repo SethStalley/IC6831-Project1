@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import static java.nio.file.StandardCopyOption.*;
 
+import org.bytedeco.javacpp.opencv_core.Mat;
+//import org.opencv.core.Mat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import team_identifier.Video;
 
 //import com.atul.JavaOpenCV.Imshow;
 
@@ -52,24 +57,25 @@ public class FileUploadController {
 			message = "No se pudo subir " + file.getOriginalFilename() + " porque el archivo es vacio";
 		}
 		System.out.println(message);
+		
 		return message;
 	}
 	
-	
+	/**
+     * Process a soccer video and create a new video file with segmented players.
+     * @input - Complete path to where the video to be processed is stored.
+     */
 	private void proccessVideo(String videoPath) {
-	/*	try {
-		//	Reader.readVideo(videoPath);
-		//	Reader.addMask();
-		//	Reader.normalize();
-			
-		    //  for(Mat frame: Reader.getMasks()){
-	        //Imshow im = new Imshow("Display");
-	        //im.showImage(Reader.truncate(Reader.stdfilt(Reader.getNormalizedHsv().get(0))));
-			
+		Video video = new Video(videoPath);
+		ArrayList<Mat> frames  = new ArrayList<Mat>();
+		
+		try {
+			frames = video.readVideo();
+			video.WriteVideo(frames,videoPath);
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 	}
 
 }

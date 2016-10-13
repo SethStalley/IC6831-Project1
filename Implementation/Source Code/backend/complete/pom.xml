@@ -13,6 +13,14 @@
         <version>1.4.0.RELEASE</version>
     </parent>
 
+ <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+        
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +47,11 @@
     	<artifactId>opencv</artifactId>
     	<version>2.4.13-0</version>
 	</dependency>
+	<dependency>
+    <groupId>org.bytedeco.javacpp-presets</groupId>
+    <artifactId>opencv</artifactId>
+    <version>3.1.0-1.2</version>
+</dependency>
     </dependencies>
 
     <properties>
@@ -55,12 +68,7 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </repository>
-    </repositories>
+   
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
