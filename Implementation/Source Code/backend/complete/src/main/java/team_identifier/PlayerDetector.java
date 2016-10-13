@@ -15,64 +15,90 @@ public class PlayerDetector extends GeneralDetector{
 		this.processedPlayers = new ArrayList<Mat>();
 	}
 	
+	/**
+	* Deletes all values below that value.
+	* @param X: 
+	* @return -
+	*/	
 	@Override
-	public void Detect(ArrayList<Mat> frames) {
-		ArrayList<Mat> preparedFrames = getPreparedFrames(frames);
-		/*
-		for(Mat frame:preparedFrames){
-			Mat temp = frame;
-
+	public void Detect(ArrayList<Mat> frames) {		
+		for(Mat frame:frames){
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+			temp = normalizeImage(temp);
+		    temp = stdfilt(temp);
+		//    temp = dilate(temp);
+		    temp = im2bw(temp);
+		 //   temp = truncate(temp);
+		   // temp = imfill(temp);
+		  
+		  //  filledImage.convertTo(filledImage, 0);
+			this.processedPlayers.add(temp);
 		}
+	
+	}
+	
+	  /**
+	  * Deletes all values below that value.
+      * @param X: 
+	  * @return -
+	  */	
+	  private double graythresh(Mat image) {
+		    Mat clone = image.clone();
+		    clone.convertTo(clone, CvType.CV_8UC1);
+		    double umbral = Imgproc.threshold(clone, clone, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
+		    return umbral;
+		  }
+
+		/**
+		* Deletes all values below that value.
+		* @param X: 
+		* @return -
+		*/	  	  
+	  private Mat im2bw(Mat image) {
+		    double umbral = graythresh(image);
+		    Mat clone = image.clone();
+		    Imgproc.threshold(clone, clone, umbral, 255, Imgproc.THRESH_BINARY);
+		    return clone;
+	  }
+	
+	/**
+	* 
+	* @param X: 
+	* @return -
 	*/
+	private Mat normalizeImage(Mat image) {
+		 Mat clone = image.clone();
+		 Core.normalize(clone, clone, 0, 255, Core.NORM_MINMAX);
+		 return clone;
 	}
-	
+
+
 	/**
-     * 
-     * @param X: 
-     * @return -
-     */
-	public Mat normalizeFrame(Mat hsv){
-		int cols = hsv.cols();
-		int rows = hsv.rows();
+	* Calculates local variance.
+	* @param X: H channel of HSV (Mat)
+	* @return - Image corresponding to the local variance
+	*/	
+	private Mat stdfilt(Mat image) {
+		  Mat image32f = new Mat();
+		  image.convertTo(image32f, CvType.CV_32F);
 
-		Mat dest = new Mat(rows, cols, hsv.type());
-			
-		for(int row = 0; row<rows; row++){
-			for(int col = 0; col<cols; col++){
-				double[] channels = hsv.get(row, col);
-				double[] normalizedChannels = new double[]{(int)((channels[0]/360) * 255), 0, 0};
-                dest.put(row, col, normalizedChannels);
-			}			
-		}
-		return dest;
-	}
-	
-	/**
-     * 
-     * @param X: 
-     * @return -
-     */	
-	public Mat stdfilt(Mat image){
-	  Mat image32f = new Mat();
-	  image.convertTo(image32f, CvType.CV_32F);
+		  Mat mu = new Mat();
+		  Mat mu2 = new Mat();
+		  Imgproc.blur(image32f, mu, new Size(3, 3));
+	      Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
 
-	  Mat mu = new Mat();
-	  Mat mu2 = new Mat();
-	  Imgproc.blur(image32f, mu, new Size(3, 3));
-      Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
+	      Mat sigma = new Mat();
+	      Mat src = new Mat();
+	      
+	      Core.subtract(mu2, mu.mul(mu), src);
+	      Core.sqrt(src, sigma);
+	      
+	      Mat image2 = new Mat();
+		  sigma.convertTo(image2, image.type());
+	      
+	      return image2;
+	  }	
 
-      Mat sigma = new Mat();
-      Mat src = new Mat();
-	      
-      Core.subtract(mu2, mu.mul(mu), src);
-      Core.sqrt(src, sigma);
-	      
-      Mat image2 = new Mat();
-	  sigma.convertTo(image2, image.type());
-	      
-      return image2;
-	}
-	
 	/**
      * 
      * @param X: 

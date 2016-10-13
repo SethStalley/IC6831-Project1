@@ -19,7 +19,7 @@ public class ImageProcessor {
 	public ImageProcessor(ArrayList<Mat> frames){
 		this.frames = frames;
 	}
-    	
+   /* 	
 	public ArrayList<Mat> process(){
 		ArrayList<Mat> processedFrames = new ArrayList<Mat>();
 		
@@ -29,6 +29,17 @@ public class ImageProcessor {
 			temp = dilate(temp);
 			temp = imfill(temp);
 			temp = bwareopen(temp);
+			processedFrames.add(temp);
+		}
+		
+		return processedFrames;
+	}
+	*/
+	public ArrayList<Mat> process(){
+		ArrayList<Mat> processedFrames = new ArrayList<Mat>();
+		
+		for(Mat frame:frames){
+			Mat temp = truncate(stdfilt(normalizeFrame(getHueChannel(convertRgb2Hsv(frame)))));
 			processedFrames.add(temp);
 		}
 		
@@ -130,6 +141,21 @@ public class ImageProcessor {
 	}
 	
 	// Soccer Players Detection
+	
+	
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat truncate(Mat image){
+		Mat result = new Mat(image.rows(), image.cols(), image.type());
+
+        result = image;
+        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
+        return result;
+	}
+	
 	/**
      * 
      * @param X: 
@@ -176,20 +202,4 @@ public class ImageProcessor {
 	      
       return image2;
 	}
-	
-	/**
-     * 
-     * @param X: 
-     * @return -
-     */
-	public Mat truncate(Mat image){
-		Mat result = new Mat(image.rows(), image.cols(), image.type());
-
-        result = image;
-        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
-        return result;
-	}
-	
-	
-
 }

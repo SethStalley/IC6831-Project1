@@ -1,0 +1,64 @@
+package team_identifier;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
+
+public abstract class GeneralDetector{
+			
+			
+	/**
+	* Convert RGB Mat to HSV
+    * @param X: RGB Image (Mat)
+	* @return - HSV Image (Mat)
+	*/
+	protected Mat convertRgb2Hsv(Mat frame) {
+		Mat frameHsv = new Mat(frame.height(), frame.width(), frame.type());
+		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
+		return frameHsv;
+	}
+			
+	/**
+	* Extract Hue Channel from HSV image
+	* @param X: HSV Image (Mat)
+	* @return - Hue Channel of the image (Mat)
+	*/
+	protected Mat getHueChannel(Mat hsv){
+		List<Mat> channels = new Vector<Mat>();
+		Core.split(hsv, channels);
+				
+		return channels.get(0);
+	}
+				
+	/**
+	 * Creates a binary mask of green pixels of an image.
+	 * @param X: Hue Channel of a HSV Image.
+	 * @return - A mask of green pixels (Mat).
+	 */
+	protected Mat getRange(Mat image){
+		Mat mask = new Mat();
+				
+		Scalar lowerGreen = new Scalar(18, 100, 50);
+		Scalar upperGreen = new Scalar(93, 255, 255);
+
+		Core.inRange(image, lowerGreen, upperGreen, mask);
+				
+		return mask;		
+	}
+
+	public ArrayList<Mat> getPreparedFrames(ArrayList<Mat> frames){
+		ArrayList<Mat> preparedFrames = new ArrayList<Mat>();
+		for(Mat frame:frames){
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+			temp = getRange(temp); 
+			preparedFrames.add(temp);
+		}
+		return preparedFrames;
+	}
+		
+}

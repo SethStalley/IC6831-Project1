@@ -11,9 +11,11 @@ public class Video {
 	// private String videoId;
 	private String path;
 	private static final int CV_CAP_PROP_FRAME_COUNT = 7;
+	ArrayList<Mat> frames;
 	
 	public Video(String path){
 		this.path = path;
+		this.frames = new ArrayList<Mat>();
 	}
 	
 	/**
@@ -21,7 +23,7 @@ public class Video {
      * @return - List of frames (Mat)
      * @throws FileNotFoundException 
      */
-	public ArrayList<Mat> readVideo() throws FileNotFoundException{
+	public void readVideo() throws FileNotFoundException{
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		
 		ArrayList<Mat> frames  = new ArrayList<Mat>();
@@ -41,9 +43,31 @@ public class Video {
 			cap.read(frame);
 			frames.add(frame);
 		}	
-		//this.frames = frames;	
-		return frames;
+		this.frames = frames;	
 	}
 	
+	public void segmentate(){
+		PlayerDetector playerDetector = new PlayerDetector();
+		playerDetector.Detect(frames);
+		ArrayList<Mat> playerFrames  = playerDetector.getProcessedPlayers();
+		
+		System.out.println(playerFrames.size());
+		
+		for(Mat frame:playerFrames){
+			Imshow im2 = new Imshow("Display");
+			im2.showImage(frame);
+		}
+        
+	/*	SoccerFieldDetector fieldDetector = new SoccerFieldDetector();
+		Imshow im1 = new Imshow("Display");
+        im1.showImage(this.frames.get(100));
+        
+		fieldDetector.Detect(this.frames);
+		ArrayList<Mat> fieldFrames  = fieldDetector.getProcessedFields();
+
+		Imshow im = new Imshow("Display");
+        im.showImage(fieldFrames.get(100));
+	*/	
+	}
 	
 }

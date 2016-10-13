@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
 import org.opencv.core.Scalar;
-import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 public class SoccerFieldDetector extends GeneralDetector{
@@ -18,18 +18,34 @@ public class SoccerFieldDetector extends GeneralDetector{
 	 	
 		@Override
 		public void Detect(ArrayList<Mat> frames) {
-			ArrayList<Mat> preparedFrames = getPreparedFrames(frames);
-		
-			for(Mat frame:preparedFrames){
-				Mat temp = frame;
+			for(Mat frame:frames){
+				Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+				temp = getRange(temp); 
 				temp = dilate(temp);
 				temp = imfill(temp);
 				temp = bwareopen(temp);
+				temp = removeLogo(temp);
 				this.processedFields.add(temp);
 			}
 			
 		}
 
+		/**
+		 * Creates a binary mask of green pixels of an image.
+		 * @param X: Hue Channel of a HSV Image.
+		 * @return - A mask of green pixels (Mat).
+		 */
+		protected Mat getRange(Mat image){
+			Mat mask = new Mat();
+					
+			Scalar lowerGreen = new Scalar(18, 100, 50);
+			Scalar upperGreen = new Scalar(93, 255, 255);
+
+			Core.inRange(image, lowerGreen, upperGreen, mask);
+					
+			return mask;		
+		}
+		
 		/**
 	     * Find and fill the contours of the players in the field.
 	     * @param: Image to be filled (Mat).
@@ -67,20 +83,15 @@ public class SoccerFieldDetector extends GeneralDetector{
 		}
 		
 		/**
-	     * 
-	     * @param X: 
-	     * @return -
+	     * Removes the logo of the image. 
+	     * @param X: Image (Mat).
+	     * @return - Image without logo (Mat).
 	     */
-		public Mat dilate(Mat hsv){
-			int dilation_size = 2;
-			Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
-			
-			Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
-	        Imgproc.dilate(hsv, result, kernel);
-	    
-	        return result;
-
+		private Mat removeLogo(Mat image) {
+		    Core.rectangle(image, new Point(426, 1), new Point(637, 80), new Scalar(0), -1);
+		    return image;
 		}
+		
 		
 		public ArrayList<Mat> getProcessedFields(){
 			return this.processedFields;
