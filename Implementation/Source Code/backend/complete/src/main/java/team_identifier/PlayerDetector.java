@@ -15,51 +15,20 @@ public class PlayerDetector extends GeneralDetector{
 		this.processedPlayers = new ArrayList<Mat>();
 	}
 	
-	/**
-	* Deletes all values below that value.
-	* @param X: 
-	* @return -
-	*/	
+	
 	@Override
 	public void Detect(ArrayList<Mat> frames) {		
 		for(Mat frame:frames){
 			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
 			temp = normalizeImage(temp);
 		    temp = stdfilt(temp);
-		//    temp = dilate(temp);
-		    temp = im2bw(temp);
-		 //   temp = truncate(temp);
-		   // temp = imfill(temp);
-		  
-		  //  filledImage.convertTo(filledImage, 0);
+	//	    temp = dilate(temp);
+		    temp = truncate(temp);
 			this.processedPlayers.add(temp);
 		}
 	
 	}
-	
-	  /**
-	  * Deletes all values below that value.
-      * @param X: 
-	  * @return -
-	  */	
-	  private double graythresh(Mat image) {
-		    Mat clone = image.clone();
-		    clone.convertTo(clone, CvType.CV_8UC1);
-		    double umbral = Imgproc.threshold(clone, clone, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
-		    return umbral;
-		  }
 
-		/**
-		* Deletes all values below that value.
-		* @param X: 
-		* @return -
-		*/	  	  
-	  private Mat im2bw(Mat image) {
-		    double umbral = graythresh(image);
-		    Mat clone = image.clone();
-		    Imgproc.threshold(clone, clone, umbral, 255, Imgproc.THRESH_BINARY);
-		    return clone;
-	  }
 	
 	/**
 	* 
@@ -67,17 +36,15 @@ public class PlayerDetector extends GeneralDetector{
 	* @return -
 	*/
 	private Mat normalizeImage(Mat image) {
-		 Mat clone = image.clone();
-		 Core.normalize(clone, clone, 0, 255, Core.NORM_MINMAX);
-		 return clone;
+		 Core.normalize(image, image, 0, 255, Core.NORM_MINMAX);
+		 return image;
 	}
-
 
 	/**
 	* Calculates local variance.
 	* @param X: H channel of HSV (Mat)
 	* @return - Image corresponding to the local variance
-	*/	
+	*/	 
 	private Mat stdfilt(Mat image) {
 		  Mat image32f = new Mat();
 		  image.convertTo(image32f, CvType.CV_32F);
@@ -99,21 +66,18 @@ public class PlayerDetector extends GeneralDetector{
 	      return image2;
 	  }	
 
+
 	/**
      * 
      * @param X: 
      * @return -
      */
 	public Mat truncate(Mat image){
-		Mat result = new Mat(image.rows(), image.cols(), image.type());
-
-        result = image;
-        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
-        return result;
+        Imgproc.threshold(image, image, 0, 255, Imgproc.THRESH_OTSU);
+        return image;
 	}
 	
 	public ArrayList<Mat> getProcessedPlayers(){
 		return this.processedPlayers;
 	}
-
 }

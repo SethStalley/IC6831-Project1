@@ -8,7 +8,6 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Scalar;
-import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 public abstract class GeneralDetector{
@@ -43,15 +42,10 @@ public abstract class GeneralDetector{
      * @param X: 
      * @return -
      */
-	protected Mat dilate(Mat hsv){
-		int dilation_size = 2;
-		Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
-		
-		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
-        Imgproc.dilate(hsv, result, kernel);
-    
-        return result;
-
+	protected Mat dilate(Mat image){
+	    Mat dilatedMat = new Mat(); 
+	    Imgproc.dilate(image, dilatedMat, new Mat()); 
+	    return dilatedMat;
 	}
 	
 	/**

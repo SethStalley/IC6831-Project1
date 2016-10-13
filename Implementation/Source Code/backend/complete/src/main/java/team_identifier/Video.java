@@ -47,27 +47,28 @@ public class Video {
 	}
 	
 	public void segmentate(){
+		Imshow im = new Imshow("Display");
+        im.showImage(frames.get(153));
+        
 		PlayerDetector playerDetector = new PlayerDetector();
 		playerDetector.Detect(frames);
 		ArrayList<Mat> playerFrames  = playerDetector.getProcessedPlayers();
 		
 		System.out.println(playerFrames.size());
 		
-		for(Mat frame:playerFrames){
+		//for(Mat frame:playerFrames){
 			Imshow im2 = new Imshow("Display");
-			im2.showImage(frame);
-		}
+			im2.showImage(playerFrames.get(0));
+		//}
         
-	/*	SoccerFieldDetector fieldDetector = new SoccerFieldDetector();
-		Imshow im1 = new Imshow("Display");
-        im1.showImage(this.frames.get(100));
-        
-		fieldDetector.Detect(this.frames);
+		SoccerFieldDetector fieldDetector = new SoccerFieldDetector();
 		ArrayList<Mat> fieldFrames  = fieldDetector.getProcessedFields();
+		fieldDetector.Detect(this.frames);
+		
+		Imshow im1 = new Imshow("Display");
+        im1.showImage(fieldFrames.get(0));
 
-		Imshow im = new Imshow("Display");
-        im.showImage(fieldFrames.get(100));
-	*/	
+        
 	}
 	
 }
