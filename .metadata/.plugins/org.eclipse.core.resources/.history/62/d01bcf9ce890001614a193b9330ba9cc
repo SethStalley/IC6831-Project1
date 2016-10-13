@@ -1,0 +1,24 @@
+package team_identifier;
+
+import java.util.ArrayList;
+import org.opencv.core.Mat;
+
+public class PlayerDetector extends GeneralDetector{
+	private ArrayList<Mat> processedPlayers;
+	
+	public PlayerDetector(){
+		this.processedPlayers = new ArrayList<Mat>();
+	}
+	
+	@Override
+	public void Detect(ArrayList<Mat> frames) {
+		ArrayList<Mat> preparedFrames = getPreparedFrames(frames);
+		
+		for(Mat frame:preparedFrames){
+			Mat temp = frame;
+
+		}
+	
+	}
+
+}

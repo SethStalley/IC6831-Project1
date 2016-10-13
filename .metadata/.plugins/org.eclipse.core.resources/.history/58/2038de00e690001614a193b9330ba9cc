@@ -1,0 +1,15 @@
+package team_identifier;
+
+import java.util.ArrayList;
+
+import org.opencv.core.Mat;
+
+public class PlayerDetector extends GeneralDetector{
+
+	@Override
+	public void Detect(ArrayList<Mat> frames) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
