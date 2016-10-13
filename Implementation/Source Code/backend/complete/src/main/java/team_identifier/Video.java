@@ -55,7 +55,7 @@ public class Video {
 	 * @Input - ArrayList<Mat> of frames to write
 	 * @Input - String file name. Name of stored video file.
 	 */
-	public void WriteVideo(ArrayList<Mat> mats, String outputFile) {
+	public void writeVideo(ArrayList<Mat> mats, String outputFile) {
 		int fourcc = VideoWriter.fourcc((byte)'a', (byte)'v', (byte)'c', (byte)'1');
 		VideoWriter videoWriter = new VideoWriter(outputFile, fourcc,20.0,mats.get(0).size(),true);
 		

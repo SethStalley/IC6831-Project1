@@ -71,7 +71,7 @@ public class FileUploadController {
 		
 		try {
 			frames = video.readVideo();
-			video.WriteVideo(frames,videoPath);
+			video.writeVideo(frames,videoPath);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

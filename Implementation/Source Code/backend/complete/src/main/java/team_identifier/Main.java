@@ -16,7 +16,7 @@ public class Main {
 		
 		frames = video.readVideo();
 		System.out.println("Frames: "+ frames.size());
-		video.WriteVideo(frames,path);
+		video.writeVideo(frames,path);
 //
 //		Imshow im1 = new Imshow("Display");
 //	    im1.showImage(frames.get(100));
