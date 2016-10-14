@@ -42,7 +42,9 @@ public class Imshow {
 
 	/**
 	 * Constructor for Imshow.
-	 * @param title String
+	 * 
+	 * @param title
+	 *            String
 	 */
 	public Imshow(String title) {
 		Window = new JFrame();
@@ -59,9 +61,13 @@ public class Imshow {
 
 	/**
 	 * Constructor for Imshow.
-	 * @param title String
-	 * @param height int
-	 * @param width int
+	 * 
+	 * @param title
+	 *            String
+	 * @param height
+	 *            int
+	 * @param width
+	 *            int
 	 */
 	public Imshow(String title, int height, int width) {
 		SizeCustom = true;
@@ -81,8 +87,10 @@ public class Imshow {
 	}
 
 	/**
-	 * Method showImage. 
-	 * @param img Mat
+	 * Method showImage.
+	 * 
+	 * @param img
+	 *            Mat
 	 */
 	public void showImage(Mat img) {
 		if (SizeCustom) {
@@ -134,7 +142,8 @@ public class Imshow {
 	/**
 	 * Method setCloseOption.
 	 * 
-	 * @param option int
+	 * @param option
+	 *            int
 	 */
 	public void setCloseOption(int option) {
 

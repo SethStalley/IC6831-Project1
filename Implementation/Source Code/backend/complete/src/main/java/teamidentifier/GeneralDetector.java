@@ -21,13 +21,17 @@ public abstract class GeneralDetector {
 
 	/**
 	 * Method Detect.
-	 * @param frames ArrayList<Mat>
+	 * 
+	 * @param frames
+	 *            ArrayList<Mat>
 	 */
 	public abstract void Detect(ArrayList<Mat> frames);
 
 	/**
 	 * Convert RGB Mat to HSV
-	 * @param frame Mat
+	 * 
+	 * @param frame
+	 *            Mat
 	 * @return - HSV Image (Mat)
 	 */
 	protected Mat convertRgb2Hsv(Mat frame) {
@@ -40,7 +44,9 @@ public abstract class GeneralDetector {
 
 	/**
 	 * Extract Hue Channel from HSV image
-	 * @param hsv Mat
+	 * 
+	 * @param hsv
+	 *            Mat
 	 * @return - Hue Channel of the image (Mat)
 	 */
 	protected Mat getHueChannel(Mat hsv) {
@@ -52,7 +58,8 @@ public abstract class GeneralDetector {
 
 	/**
 	 * 
-	 * @param image Mat
+	 * @param image
+	 *            Mat
 	 * @return -
 	 */
 	protected Mat dilate(Mat image) {
@@ -64,7 +71,8 @@ public abstract class GeneralDetector {
 	/**
 	 * Find and fill the contours of the players in the field.
 	 * 
-	 * @param mask Mat
+	 * @param mask
+	 *            Mat
 	 * @return - Image with the holes filled (Mat).
 	 */
 	protected Mat imfill(Mat mask) {

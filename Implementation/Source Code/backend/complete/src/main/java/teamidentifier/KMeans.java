@@ -8,7 +8,9 @@ public class KMeans {
 
 	/**
 	 * Constructor for KMeans.
-	 * @param numClusters int
+	 * 
+	 * @param numClusters
+	 *            int
 	 */
 	public KMeans(int numClusters) {
 		this.NUM_CLUSTERS = numClusters;
@@ -16,8 +18,11 @@ public class KMeans {
 
 	/**
 	 * // Calculate Bhattacharyya distance.
-	 * @param X double[]
-	 * @param U double[]
+	 * 
+	 * @param X
+	 *            double[]
+	 * @param U
+	 *            double[]
 	 * @return - double value. * @throws Exception
 	 */
 	public static double distance(double X[], double U[]) throws Exception {

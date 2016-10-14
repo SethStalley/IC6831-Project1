@@ -32,10 +32,8 @@ public class FileUploadController {
 	/**
 	 * Method handleFileUpload.
 	 * 
-	 * @param file
-	 *            MultipartFile
-	 * @param redirectAttributes
-	 *            RedirectAttributes
+	 * @param file MultipartFile
+	 * @param redirectAttributes RedirectAttributes
 	 * @return String
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/postFile")
@@ -70,8 +68,7 @@ public class FileUploadController {
 	 * Process a soccer video and create a new video file with segmented
 	 * players.
 	 * 
-	 * @param videoPath
-	 *            String
+	 * @param videoPath String
 	 */
 	private void proccessVideo(String videoPath) {
 		Video video = new Video(videoPath);
