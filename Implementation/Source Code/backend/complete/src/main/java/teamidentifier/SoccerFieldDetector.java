@@ -21,8 +21,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	/**
 	 * Method Detect.
 	 * 
-	 * @param frames
-	 *            ArrayList<Mat>
+	 * @param frames ArrayList<Mat>
 	 */
 	@Override
 	public void Detect(ArrayList<Mat> frames) {
@@ -55,10 +54,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 
 	/**
 	 * Creates a binary mask of green pixels of an image.
-	 * 
-	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return - A mask of green pixels (Mat).
 	 */
 	protected Mat getRange(Mat image) {
@@ -91,9 +87,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	/**
 	 * Removes the logo of the image.
 	 * 
-	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return - Image without logo (Mat).
 	 */
 	private Mat removeLogo(Mat image) {

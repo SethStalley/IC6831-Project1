@@ -17,7 +17,6 @@ import org.opencv.videoio.VideoWriter;
 /**
  */
 public class Video {
-	// private String videoId;
 	private String path;
 	private static final int CV_CAP_PROP_FRAME_COUNT = 7;
 	ArrayList<Mat> frames;
@@ -25,8 +24,7 @@ public class Video {
 	/**
 	 * Constructor for Video.
 	 * 
-	 * @param path
-	 *            String
+	 * @param path String
 	 */
 	public Video(String path) {
 		this.path = path;

@@ -19,16 +19,14 @@ public abstract class GeneralDetector {
 	/**
 	 * Method Detect.
 	 * 
-	 * @param frames
-	 *            ArrayList<Mat>
+	 * @param frames ArrayList<Mat>
 	 */
 	public abstract void Detect(ArrayList<Mat> frames);
 
 	/**
 	 * Convert RGB Mat to HSV
 	 * 
-	 * @param frame
-	 *            Mat
+	 * @param frame Mat
 	 * @return - HSV Image (Mat)
 	 */
 	protected Mat convertRgb2Hsv(Mat frame) {
@@ -54,8 +52,7 @@ public abstract class GeneralDetector {
 
 	/**
 	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return -
 	 */
 	protected Mat dilate(Mat image) {
@@ -89,7 +86,7 @@ public abstract class GeneralDetector {
 	 */
 	private Mat floodFill(Mat mat, Scalar color) {
 		Mat clone = mat.clone();
-		Point point2Fill = new Point(0,clone.height() * 0.75);
+		Point point2Fill = new Point(0, clone.height() * 0.75);
 	    Mat mask = new Mat(clone.rows() + 2, clone.cols() + 2, CvType.CV_8UC1);
 	    
 	    Imgproc.floodFill(clone, mask, point2Fill, color);
