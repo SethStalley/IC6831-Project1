@@ -28,7 +28,8 @@ public class SoccerFieldDetector extends GeneralDetector {
 	public void Detect(ArrayList<Mat> frames) {
 		for (Mat frame : frames) {
 			Mat temp = getHueChannel(convertRgb2Hsv(frame));
-			temp = getRange(temp);
+			temp = selectField(temp);
+//			temp = getRange(temp);
 			temp = dilate(temp);
 			temp = imfill(temp);
 			temp = bwareopen(temp);
@@ -37,6 +38,20 @@ public class SoccerFieldDetector extends GeneralDetector {
 		}
 
 	}
+	
+	/*
+	 * Gets the field from image
+	 */
+	private Mat selectField(Mat image) {
+		int hsvGreen = 60, sensitivity = 30;
+	    Scalar minAlpha = new Scalar(hsvGreen - sensitivity, 
+	        0, 0); 
+	    Scalar maxAlpha = new Scalar(hsvGreen + sensitivity, 255, 255);
+	    
+	    Mat twoToneImage =  new Mat();
+	    Core.inRange(image, minAlpha, maxAlpha, twoToneImage);
+	    return twoToneImage;
+	 }
 
 	/**
 	 * Creates a binary mask of green pixels of an image.
@@ -57,32 +72,6 @@ public class SoccerFieldDetector extends GeneralDetector {
 		return mask;
 	}
 
-	/**
-	 * Find and fill the contours of the players in the field.
-	 * 
-	 * 
-	 * @param mask
-	 *            Mat
-	 * @return - Image with the holes filled (Mat).
-	 */
-	public Mat imfill(Mat mask) {
-		Mat result, hierarchy, destiny;
-		result = new Mat(mask.rows(), mask.cols(), mask.type());
-		destiny = new Mat(mask.rows(), mask.cols(), mask.type());
-		hierarchy = new Mat();
-
-		ArrayList<MatOfPoint> contours = new ArrayList<>();
-		Core.bitwise_not(mask, result);
-		Imgproc.findContours(result, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-
-		for (MatOfPoint contour : contours) {
-			ArrayList<MatOfPoint> list = new ArrayList<>();
-			list.add(contour);
-			Imgproc.drawContours(result, list, 0, new Scalar(255), -1);
-		}
-		Core.bitwise_not(result, destiny);
-		return destiny;
-	}
 
 	/**
 	 * Fill small spurious regions

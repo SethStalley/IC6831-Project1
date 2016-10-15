@@ -29,31 +29,40 @@ public class PlayerDetector extends GeneralDetector {
 			temp = normalizeImage(temp);
 			temp = stdfilt(temp);
 			temp = dilate(temp);
-			temp = truncate(temp);
+			
+			double umbral = graythresh(temp);
+		    Imgproc.threshold(temp, temp, umbral, 255, Imgproc.THRESH_BINARY);			
+			
+		    temp = truncate(temp);
+			temp = imfill(temp);
+			temp.convertTo(temp, 0);
 			this.processedPlayers.add(temp);
 		}
 
 	}
 
 	/**
-	 * 
-	 * 
-	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return -
 	 */
 	private Mat normalizeImage(Mat image) {
 		Core.normalize(image, image, 0, 255, Core.NORM_MINMAX);
 		return image;
 	}
+	
+	
+	private double graythresh(Mat mat) {
+	   Mat clone = mat.clone();
+	   clone.convertTo(clone, CvType.CV_8UC1);
+	   double umbral = Imgproc.threshold(clone, clone, 0, 255, 
+	       Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
+	   return umbral;
+	}
 
 	/**
 	 * Calculates local variance.
 	 * 
-	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return - Image corresponding to the local variance
 	 */
 	private Mat stdfilt(Mat image) {
@@ -62,8 +71,8 @@ public class PlayerDetector extends GeneralDetector {
 
 		Mat mu = new Mat();
 		Mat mu2 = new Mat();
-		Imgproc.blur(image32f, mu, new Size(3, 3));
-		Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
+		Imgproc.blur(image32f, mu, new Size(10, 10));
+		Imgproc.blur(image32f.mul(image32f), mu2, new Size(10, 10));
 
 		Mat sigma = new Mat();
 		Mat src = new Mat();
@@ -79,10 +88,7 @@ public class PlayerDetector extends GeneralDetector {
 
 	/**
 	 * 
-	 * 
-	 * 
-	 * @param image
-	 *            Mat
+	 * @param image  Mat
 	 * @return -
 	 */
 	public Mat truncate(Mat image) {

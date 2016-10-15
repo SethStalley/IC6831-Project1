@@ -26,14 +26,16 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		String path = Paths.get("C:\\Users\\seths\\Desktop\\test.mp4").toString();
+		String path = Paths.get("C:\\Users\\Seth\\Desktop\\test.mp4").toString();
 		
 		Video video = new Video(path);
 
 		video.readVideo();
 		video.segmentate();
 		
-		path = Paths.get("C:\\Users\\seths\\Desktop\\output.mp4").toString();
+		System.out.println(video.frames.size());
+		
+		path = Paths.get("C:\\Users\\Seth\\Desktop\\output.mp4").toString();
 		video.writeVideo(video.frames, path);
 	}
 

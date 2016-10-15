@@ -56,7 +56,7 @@ public class Video {
 				break;
 			frames.add(mat);
 		}
-		cap.release();
+
 		this.frames = frames;
 		return frames;
 	}
@@ -86,7 +86,6 @@ public class Video {
 		 playerDetector.Detect(this.frames);
 		 ArrayList<Mat> playerFrames = playerDetector.getProcessedPlayers();
 		
-		 System.out.println(playerFrames.size());
 
 		 SoccerFieldDetector fieldDetector = new SoccerFieldDetector();
 		 fieldDetector.Detect(this.frames);
@@ -95,7 +94,8 @@ public class Video {
 		 
 		 //freeMats
 		 freeMats(this.frames);
-		 
+		 this.frames = playerFrames;
+		 		 
 //		 for(int i=0; i< playerFrames.size(); i++) {
 //			 Mat player = playerFrames.get(i);
 //			 Mat field = fieldFrames.get(i);
@@ -104,7 +104,8 @@ public class Video {
 //			 field.release();
 //			 player.release();
 //		 }
-//		 System.out.println("Segment done");
+//		 
+		 System.out.println("Segment done");
 	 }
 	 
 	 private void freeMats(ArrayList<Mat> mats) {
@@ -115,9 +116,8 @@ public class Video {
 	 }
 	 
 	  private Mat getFinalMat(Mat field, Mat player) {
-	    Mat invertedField = complement(field);
-	    Mat playerMat = or(invertedField,player);
-	    //playerMat = fillPlayers(playerMat, new Point(0,0), new Scalar(0));
+	    Mat playerMat = xor(complement(field),player);
+	    playerMat = fillPlayers(playerMat, new Point(0,0), new Scalar(0));
 
 	    return playerMat;
 	  }
@@ -128,15 +128,14 @@ public class Video {
 		  return invertedMat;
 	  }
 	  
-	  private Mat or(Mat mat1, Mat mat2) {
+	  private Mat xor(Mat mat1, Mat mat2) {
 		  Mat orMat = new Mat();
 		  Core.bitwise_xor(mat1, mat2, orMat);
 		  return orMat;
 	  }
 	  
 	  private Mat fillPlayers(Mat image, Point point, Scalar color) {
-	    Mat matImage = image;
-	    Mat matImageClone = matImage.clone();
+	    Mat matImageClone = image.clone();
 	    Mat mask = new Mat(matImageClone.rows() + 2, matImageClone.cols() + 2, CvType.CV_8UC1);
 	    Imgproc.floodFill(matImageClone, mask, point, color);
 	    return matImageClone;

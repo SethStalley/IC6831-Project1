@@ -1,8 +1,10 @@
 package teamidentifier;
 
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
@@ -31,7 +33,7 @@ public abstract class GeneralDetector {
 	 */
 	protected Mat convertRgb2Hsv(Mat frame) {
 		Mat frameHsv = new Mat(frame.size(),frame.type());
-		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV_FULL);
+		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
 		return frameHsv;
 	}
 
@@ -47,6 +49,8 @@ public abstract class GeneralDetector {
 
 		return channels.get(0);
 	}
+	
+	
 
 	/**
 	 * 
@@ -66,23 +70,31 @@ public abstract class GeneralDetector {
 	 * @param mask Mat
 	 * @return - Image with the holes filled (Mat).
 	 */
-	protected Mat imfill(Mat mask) {
-		Mat result, hierarchy, destiny;
-		result = new Mat(mask.rows(), mask.cols(), mask.type());
-		destiny = new Mat(mask.rows(), mask.cols(), mask.type());
-		hierarchy = new Mat();
-
-		ArrayList<MatOfPoint> contours = new ArrayList<>();
-		Core.bitwise_not(mask, result);
-		Imgproc.findContours(result, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-
-		for (MatOfPoint contour : contours) {
-			ArrayList<MatOfPoint> list = new ArrayList<>();
-			list.add(contour);
-			Imgproc.drawContours(result, list, 0, new Scalar(255), -1);
-		}
-		Core.bitwise_not(result, destiny);
-		return destiny;
+	protected Mat imfill(Mat mat) {
+		
+		//flood fill black color
+		Imgproc.rectangle(mat, new Point(0,0), new Point(50,50), new Scalar(0));
+		Mat floodFilled = floodFill(mat, new Scalar(225));
+		
+		//image complement
+		Mat invertedMat = new Mat();
+		Core.bitwise_not(floodFilled, invertedMat);
+		Core.bitwise_xor(mat,invertedMat,mat);
+		
+		return mat;
+	}
+	
+	/*
+	 * Flood fill
+	 */
+	private Mat floodFill(Mat mat, Scalar color) {
+		Mat clone = mat.clone();
+		Point point2Fill = new Point(0,clone.height() * 0.75);
+	    Mat mask = new Mat(clone.rows() + 2, clone.cols() + 2, CvType.CV_8UC1);
+	    
+	    Imgproc.floodFill(clone, mask, point2Fill, color);
+	    
+	    return clone;
 	}
 
 }
