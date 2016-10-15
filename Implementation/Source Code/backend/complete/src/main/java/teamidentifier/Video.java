@@ -66,10 +66,10 @@ public class Video {
 	 *            String
 	 */
 	public void writeVideo(ArrayList<Mat> mats, String outputFile) {
-		int fourcc = VideoWriter.fourcc('H','2','6','4');
+		int fourcc = VideoWriter.fourcc('M','P','4','V');
 		Size size = mats.get(0).size();
 
-		VideoWriter videoWriter = new VideoWriter(outputFile, 0, 23.7, size);
+		VideoWriter videoWriter = new VideoWriter(outputFile, fourcc, 23.7, size, false);
 
 		for (Mat mat : mats) {
 			videoWriter.write(mat);
@@ -95,11 +95,10 @@ public class Video {
 		 SoccerFieldDetector fieldDetector = new SoccerFieldDetector();
 		 ArrayList<Mat> fieldFrames = fieldDetector.getProcessedFields();
 		 fieldDetector.Detect(this.frames);
-		
 
-		 Imshow im1 = new Imshow("Display");
-		 im1.showImage(fieldFrames.get(0));
-	
+//		 Imshow im1 = new Imshow("Display");
+//		 im1.showImage(playerFrames.get(100));
+		 this.frames=playerFrames;
 	
 	 }
 

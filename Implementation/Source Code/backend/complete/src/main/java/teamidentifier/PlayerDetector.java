@@ -20,8 +20,7 @@ public class PlayerDetector extends GeneralDetector {
 	/**
 	 * Method Detect.
 	 * 
-	 * @param frames
-	 *            ArrayList<Mat>
+	 * @param frames ArrayList<Mat>
 	 */
 	@Override
 	public void Detect(ArrayList<Mat> frames) {

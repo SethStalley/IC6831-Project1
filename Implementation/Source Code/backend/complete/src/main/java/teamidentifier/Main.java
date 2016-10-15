@@ -32,7 +32,7 @@ public class Main {
 
 		video.readVideo();
 		video.segmentate();
-		path = Paths.get("C:\\Users\\seths\\Desktop\\output.avi").toString();
+		path = Paths.get("C:\\Users\\seths\\Desktop\\output.mp4").toString();
 		
 		video.writeVideo(video.frames, path);
 	}
