@@ -6,7 +6,6 @@ Sistema que segmenta y clasifica por equipo los jugadores de fútbol en un video
 1. JDK 8.1 o superior
 2. Eclipse Neon Jee
 3. OpenCV-3.1
-4. Instalación OpenCV 3.1
 
 # Instalación OpenCV 3.1
 - Descargue la biblioteca del siguiente enlace: https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.1.0/opencv-3.1.0.exe/download
