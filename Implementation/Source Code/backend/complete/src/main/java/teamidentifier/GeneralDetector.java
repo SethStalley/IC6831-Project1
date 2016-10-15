@@ -6,11 +6,6 @@ import org.opencv.core.MatOfPoint;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
-//opencv3
-//import org.bytedeco.javacpp.opencv_core.Mat;
-//import org.bytedeco.javacpp.opencv_ximgproc;
-//import org.bytedeco.javacpp.opencv_core;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -35,22 +30,19 @@ public abstract class GeneralDetector {
 	 * @return - HSV Image (Mat)
 	 */
 	protected Mat convertRgb2Hsv(Mat frame) {
-		Mat frameHsv = new Mat(frame.height(), frame.width(), frame.type());
-		// Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
-		int color = Imgproc.COLOR_RGB2HSV;
-		Imgproc.cvtColor(frame, frameHsv, color);
+		Mat frameHsv = new Mat(frame.size(),frame.type());
+		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV_FULL);
 		return frameHsv;
 	}
 
 	/**
 	 * Extract Hue Channel from HSV image
 	 * 
-	 * @param hsv
-	 *            Mat
+	 * @param hsv Mat
 	 * @return - Hue Channel of the image (Mat)
 	 */
 	protected Mat getHueChannel(Mat hsv) {
-		List<Mat> channels = new Vector<Mat>();
+		Vector<Mat> channels = new Vector<Mat>();
 		Core.split(hsv, channels);
 
 		return channels.get(0);

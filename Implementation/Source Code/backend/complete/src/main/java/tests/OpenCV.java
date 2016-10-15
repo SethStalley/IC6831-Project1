@@ -5,9 +5,8 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import org.bytedeco.javacpp.opencv_core.Mat;
-
 import org.junit.Test;
+import org.opencv.core.Mat;
 
 import teamidentifier.Video;
 

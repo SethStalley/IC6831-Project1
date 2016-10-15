@@ -108,7 +108,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	 * @return - Image without logo (Mat).
 	 */
 	private Mat removeLogo(Mat image) {
-		Core.rectangle(image, new Point(426, 1), new Point(637, 80), new Scalar(0), -1);
+		Imgproc.rectangle(image, new Point(426, 1), new Point(637, 80), new Scalar(0), -1);
 		return image;
 	}
 

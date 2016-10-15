@@ -29,7 +29,7 @@ public class PlayerDetector extends GeneralDetector {
 			Mat temp = getHueChannel(convertRgb2Hsv(frame));
 			temp = normalizeImage(temp);
 			temp = stdfilt(temp);
-			// temp = dilate(temp);
+			temp = dilate(temp);
 			temp = truncate(temp);
 			this.processedPlayers.add(temp);
 		}
