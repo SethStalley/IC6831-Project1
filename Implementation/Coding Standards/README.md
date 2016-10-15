@@ -1,7 +1,8 @@
 # Java
 Para el desarrollo de la aplicación en Java, se escogió la guía de estilo de Google, 
 la cual puede accederse en el siguiente enlace:
-https://google.github.io/styleguide/javaguide.html 
+https://google.github.io/styleguide/javaguide.html. 
+Los lineamientos de esta guía se encuentran definidos en el .xml adjunto en esta carpeta.
 
 # Angular 2.0
 Se está utilizando la version más nueva de Angular, por lo que se decidió aplicar una guía de estilo para Typescript, 
