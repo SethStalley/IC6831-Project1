@@ -63,8 +63,7 @@ public abstract class GeneralDetector {
 	/**
 	 * Find and fill the contours of the players in the field.
 	 * 
-	 * @param mask
-	 *            Mat
+	 * @param mask Mat
 	 * @return - Image with the holes filled (Mat).
 	 */
 	protected Mat imfill(Mat mask) {
