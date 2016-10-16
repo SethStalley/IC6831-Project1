@@ -17,16 +17,14 @@ public abstract class GeneralDetector {
 	/**
 	 * Method Detect.
 	 * 
-	 * @param frames
-	 *            ArrayList<Mat>
+	 * @param frames ArrayList<Mat>
 	 */
 	public abstract void Detect(ArrayList<Mat> frames);
 
 	/**
 	 * Convert RGB Mat to HSV
 	 * 
-	 * @param frame
-	 *            Mat
+	 * @param frame Mat
 	 * @return - HSV Image (Mat)
 	 */
 	protected Mat convertRgb2Hsv(Mat frame) {
@@ -52,8 +50,7 @@ public abstract class GeneralDetector {
 
 	/**
 	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return -
 	 */
 	protected Mat dilate(Mat image) {

@@ -21,6 +21,7 @@ export class FileUploder {
      this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
           //console.log("VideoUpload:uploaded:", item,response, status);  
           var fileName : string = item.some['name'];
+          console.log(fileName);
           this.setFileName(fileName);
 
      };

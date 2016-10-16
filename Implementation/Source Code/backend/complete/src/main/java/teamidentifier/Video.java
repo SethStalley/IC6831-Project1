@@ -16,15 +16,13 @@ import org.opencv.videoio.VideoWriter;
 /**
  */
 public class Video {
-	// private String videoId;
 	private String path;
-	ArrayList<Mat> frames;
+	public ArrayList<Mat> frames;
 
 	/**
 	 * Constructor for Video.
 	 * 
-	 * @param path
-	 *            String
+	 * @param path String
 	 */
 	public Video(String path) {
 		this.path = path;
@@ -54,7 +52,7 @@ public class Video {
 				break;
 			frames.add(mat);
 		}
-
+		cap.release();
 		this.frames = frames;
 		return frames;
 	}

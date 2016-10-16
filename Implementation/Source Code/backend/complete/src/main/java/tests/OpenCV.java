@@ -6,12 +6,18 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
 import teamidentifier.Video;
 
 public class OpenCV {
-
+	static {  
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		System.loadLibrary("opencv_ffmpeg310_64");		
+		System.loadLibrary("openh264-1.4.0-win64msvc");	  
+	} 
+	
 	String userDir = System.getProperty("user.dir");
 	String ROOT = userDir.substring(0, userDir.lastIndexOf("Implementation"));
 	String testVid = ROOT + "dataFiles/test.mp4";

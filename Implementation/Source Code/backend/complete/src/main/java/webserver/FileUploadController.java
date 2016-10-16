@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 import static java.nio.file.StandardCopyOption.*;
 
-import org.opencv.core.Mat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +24,7 @@ import teamidentifier.Video;
 public class FileUploadController {
 
 	String dir = System.getProperty("user.dir");
-	String ROOT = dir.substring(0, dir.lastIndexOf("backend")) + "backend/complete/src/main/resources/public/videos";
+	String ROOT = dir.substring(0, dir.lastIndexOf("backend")) + "backend/complete/src/main/webapp/videos";
 
 	/**
 	 * Method handleFileUpload.
@@ -71,11 +69,11 @@ public class FileUploadController {
 	 */
 	private void proccessVideo(String videoPath) {
 		Video video = new Video(videoPath);
-		ArrayList<Mat> frames = new ArrayList<Mat>();
 
 		try {
-			frames = video.readVideo();
-			video.writeVideo(frames, videoPath);
+			video.readVideo();
+			video.segmentate();
+			video.writeVideo(video.frames, videoPath);
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
