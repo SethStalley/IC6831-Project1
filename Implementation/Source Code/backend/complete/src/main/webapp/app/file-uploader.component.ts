@@ -30,7 +30,6 @@ export class FileUploder {
   fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
-
   setFileName(fileName:string) {
     this.fileName = fileName;
   }
@@ -52,5 +51,3 @@ export class FileUploder {
   //       theme: "material"
   //   });
   // };
-
-
