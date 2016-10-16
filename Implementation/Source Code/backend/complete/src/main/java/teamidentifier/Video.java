@@ -90,14 +90,12 @@ public class Video {
 		 
 		 //freeMats
 		 freeMats(this.frames);
-
+		 
 		 for(int i=0; i< playerFrames.size(); i++) {
 			 Mat player = playerFrames.get(i);
 			 Mat field = fieldFrames.get(i);
 			 
 			 this.frames.add(getFinalMat(field,player));
-			 field.release();
-			 player.release();
 		 }
 		 
 		 System.out.println("Segment done");
@@ -111,9 +109,8 @@ public class Video {
 	 }
 	 
 	  private Mat getFinalMat(Mat field, Mat player) {	
-		Mat result = new Mat();
-	    Core.bitwise_and(field,player, result);
-	    
+		Mat result = player.clone();
+		Core.bitwise_and(result, field, result);
 	    return result;
 	  }
 	  

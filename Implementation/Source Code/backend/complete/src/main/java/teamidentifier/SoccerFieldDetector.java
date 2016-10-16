@@ -29,10 +29,20 @@ public class SoccerFieldDetector extends GeneralDetector {
 			Mat temp = getHueChannel(convertRgb2Hsv(frame));
 			temp = getRange(temp);
 			temp = dilate(temp);
-			
-			temp = bwareopen(temp);
 			temp = imfill(temp, new Point(0,0));
+			temp = bwareopen(temp);
+			Core.bitwise_not(temp, temp);
+			temp = dilate(temp);
+			temp = dilate(temp);
+			temp = dilate(temp);
+			temp = dilate(temp);
+			temp = dilate(temp);
+			temp = dilate(temp);
+			temp = bwareopen(temp);
+			Core.bitwise_not(temp, temp);
+			
 			temp = removeLogo(temp);
+			
 			this.processedFields.add(temp);
 		}
 
@@ -45,13 +55,12 @@ public class SoccerFieldDetector extends GeneralDetector {
 	 * @return - A mask of green pixels (Mat).
 	 */
 	protected Mat getRange(Mat image) {
-		Mat mask = new Mat();
+		Mat mask = image.clone();
 
-		Scalar lowerGreen = new Scalar(18, 100, 50);
-		Scalar upperGreen = new Scalar(93, 255, 255);
-
+		Scalar lowerGreen = new Scalar(18, 100, 30);
+		Scalar upperGreen = new Scalar(92, 255, 255);
 		Core.inRange(image, lowerGreen, upperGreen, mask);
-
+		
 		return mask;
 	}
 
@@ -75,7 +84,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	    
 	    if (!contours.isEmpty()) {
 	      for (int i = 0; i < contours.size(); i++) {
-	        if (Imgproc.contourArea((contours.get(i))) < 4000) {
+	        if (Imgproc.contourArea((contours.get(i))) < 7000) {
 	          littleContours.add(contours.get(i));
 	        }
 	     }

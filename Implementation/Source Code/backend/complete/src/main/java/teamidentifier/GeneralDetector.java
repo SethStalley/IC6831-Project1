@@ -69,7 +69,7 @@ public abstract class GeneralDetector {
 		
 		//flood fill black color
 		Imgproc.rectangle(mat, new Point(0,0), new Point(50,50), new Scalar(0));
-		Mat floodFilled = floodFill(mat, new Scalar(225), point);
+		Mat floodFilled = floodFill(mat, new Scalar(255), point);
 		
 		//image complement
 		Mat invertedMat = new Mat();
@@ -85,9 +85,7 @@ public abstract class GeneralDetector {
 	public static Mat floodFill(Mat mat, Scalar color, Point point) {
 		Mat clone = mat.clone();
 	    Mat mask = new Mat(clone.rows() + 2, clone.cols() + 2, CvType.CV_8UC1);
-	    
 	    Imgproc.floodFill(clone, mask, point, color);
-	    
 	    return clone;
 	}
 

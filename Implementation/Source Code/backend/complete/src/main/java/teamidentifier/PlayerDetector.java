@@ -29,14 +29,15 @@ public class PlayerDetector extends GeneralDetector {
 			Mat temp = getHueChannel(convertRgb2Hsv(frame));
 			temp = normalizeImage(temp);
 			temp = stdfilt(temp);
+			
 			temp = dilate(temp);
+			temp = truncate(temp);
 			
 			double umbral = graythresh(temp);
 		    Imgproc.threshold(temp, temp, umbral, 255, Imgproc.THRESH_BINARY);			
 			
-		    temp = truncate(temp);
-			temp = imfill(temp, new Point(0, temp.height()  * 0.70));
-			temp.convertTo(temp, 0);
+		    temp = imfill(temp, new Point(0, temp.height()  * 0.70));
+
 			this.processedPlayers.add(temp);
 		}
 
@@ -72,8 +73,8 @@ public class PlayerDetector extends GeneralDetector {
 
 		Mat mu = new Mat();
 		Mat mu2 = new Mat();
-		Imgproc.blur(image32f, mu, new Size(11,11));
-		Imgproc.blur(image32f.mul(image32f), mu2, new Size(11, 11));
+		Imgproc.blur(image32f, mu, new Size(9,9));
+		Imgproc.blur(image32f.mul(image32f), mu2, new Size(9, 9));
 
 		Mat sigma = new Mat();
 		Mat src = new Mat();
