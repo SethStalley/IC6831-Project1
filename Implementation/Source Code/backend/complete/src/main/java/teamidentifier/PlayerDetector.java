@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
@@ -34,7 +35,7 @@ public class PlayerDetector extends GeneralDetector {
 		    Imgproc.threshold(temp, temp, umbral, 255, Imgproc.THRESH_BINARY);			
 			
 		    temp = truncate(temp);
-			temp = imfill(temp);
+			temp = imfill(temp, new Point(0, temp.height()  * 0.70));
 			temp.convertTo(temp, 0);
 			this.processedPlayers.add(temp);
 		}
@@ -71,8 +72,8 @@ public class PlayerDetector extends GeneralDetector {
 
 		Mat mu = new Mat();
 		Mat mu2 = new Mat();
-		Imgproc.blur(image32f, mu, new Size(10, 10));
-		Imgproc.blur(image32f.mul(image32f), mu2, new Size(10, 10));
+		Imgproc.blur(image32f, mu, new Size(11,11));
+		Imgproc.blur(image32f.mul(image32f), mu2, new Size(11, 11));
 
 		Mat sigma = new Mat();
 		Mat src = new Mat();

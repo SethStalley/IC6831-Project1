@@ -1,6 +1,7 @@
 package teamidentifier;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -28,37 +29,23 @@ public class SoccerFieldDetector extends GeneralDetector {
 	public void Detect(ArrayList<Mat> frames) {
 		for (Mat frame : frames) {
 			Mat temp = getHueChannel(convertRgb2Hsv(frame));
-			temp = selectField(temp);
-//			temp = getRange(temp);
+			temp = getRange(temp);
 			temp = dilate(temp);
-			temp = imfill(temp);
+			
 			temp = bwareopen(temp);
+			temp = imfill(temp, new Point(0,0));
 			temp = removeLogo(temp);
 			this.processedFields.add(temp);
 		}
 
 	}
 	
-	/*
-	 * Gets the field from image
-	 */
-	private Mat selectField(Mat image) {
-		int hsvGreen = 60, sensitivity = 30;
-	    Scalar minAlpha = new Scalar(hsvGreen - sensitivity, 
-	        0, 0); 
-	    Scalar maxAlpha = new Scalar(hsvGreen + sensitivity, 255, 255);
-	    
-	    Mat twoToneImage =  new Mat();
-	    Core.inRange(image, minAlpha, maxAlpha, twoToneImage);
-	    return twoToneImage;
-	 }
 
 	/**
 	 * Creates a binary mask of green pixels of an image.
 	 * 
 	 * 
-	 * @param image
-	 *            Mat
+	 * @param image Mat
 	 * @return - A mask of green pixels (Mat).
 	 */
 	protected Mat getRange(Mat image) {
@@ -82,10 +69,26 @@ public class SoccerFieldDetector extends GeneralDetector {
 	 * @return - Image with small regions filled (Mat).
 	 */
 	public Mat bwareopen(Mat mask) {
-		Core.bitwise_not(mask, mask);
-		Mat result = imfill(mask);
-		Core.bitwise_not(result, result);
-		return result;
+		
+		List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+		List<MatOfPoint> littleContours = new ArrayList<MatOfPoint>();
+	    Mat result = mask.clone();
+	    
+	    Imgproc.findContours(mask, contours, new Mat(), 
+	        Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+	    
+	    if (!contours.isEmpty()) {
+	      for (int i = 0; i < contours.size(); i++) {
+	        if (Imgproc.contourArea((contours.get(i))) < 4000) {
+	          littleContours.add(contours.get(i));
+	        }
+	     }
+	      
+	     Imgproc.drawContours(result, littleContours, -1, new Scalar(0),-1);
+	     return result;
+	    }
+	    return null;
+		
 	}
 
 	/**

@@ -2,7 +2,6 @@ package teamidentifier;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -19,7 +18,6 @@ import org.opencv.videoio.VideoWriter;
 public class Video {
 	// private String videoId;
 	private String path;
-	private static final int CV_CAP_PROP_FRAME_COUNT = 7;
 	ArrayList<Mat> frames;
 
 	/**
@@ -94,17 +92,16 @@ public class Video {
 		 
 		 //freeMats
 		 freeMats(this.frames);
-		 this.frames = playerFrames;
-		 		 
-//		 for(int i=0; i< playerFrames.size(); i++) {
-//			 Mat player = playerFrames.get(i);
-//			 Mat field = fieldFrames.get(i);
-//			 
-//			 this.frames.add(getFinalMat(field,player));
-//			 field.release();
-//			 player.release();
-//		 }
-//		 
+
+		 for(int i=0; i< playerFrames.size(); i++) {
+			 Mat player = playerFrames.get(i);
+			 Mat field = fieldFrames.get(i);
+			 
+			 this.frames.add(getFinalMat(field,player));
+			 field.release();
+			 player.release();
+		 }
+		 
 		 System.out.println("Segment done");
 	 }
 	 
@@ -115,11 +112,11 @@ public class Video {
 		 mats.clear();
 	 }
 	 
-	  private Mat getFinalMat(Mat field, Mat player) {
-	    Mat playerMat = xor(complement(field),player);
-	    playerMat = fillPlayers(playerMat, new Point(0,0), new Scalar(0));
-
-	    return playerMat;
+	  private Mat getFinalMat(Mat field, Mat player) {	
+		Mat result = new Mat();
+	    Core.bitwise_and(field,player, result);
+	    
+	    return result;
 	  }
 	  
 	  private Mat complement(Mat mat) {
@@ -127,19 +124,8 @@ public class Video {
 		  Core.bitwise_not(mat, invertedMat);
 		  return invertedMat;
 	  }
-	  
-	  private Mat xor(Mat mat1, Mat mat2) {
-		  Mat orMat = new Mat();
-		  Core.bitwise_xor(mat1, mat2, orMat);
-		  return orMat;
-	  }
-	  
-	  private Mat fillPlayers(Mat image, Point point, Scalar color) {
-	    Mat matImageClone = image.clone();
-	    Mat mask = new Mat(matImageClone.rows() + 2, matImageClone.cols() + 2, CvType.CV_8UC1);
-	    Imgproc.floodFill(matImageClone, mask, point, color);
-	    return matImageClone;
-	  }
+
+	 
 
 
 }

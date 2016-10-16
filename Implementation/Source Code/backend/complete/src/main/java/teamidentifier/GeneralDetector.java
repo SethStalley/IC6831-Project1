@@ -3,13 +3,11 @@ package teamidentifier;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 /**
@@ -70,11 +68,11 @@ public abstract class GeneralDetector {
 	 * @param mask Mat
 	 * @return - Image with the holes filled (Mat).
 	 */
-	protected Mat imfill(Mat mat) {
+	public static Mat imfill(Mat mat, Point point) {
 		
 		//flood fill black color
 		Imgproc.rectangle(mat, new Point(0,0), new Point(50,50), new Scalar(0));
-		Mat floodFilled = floodFill(mat, new Scalar(225));
+		Mat floodFilled = floodFill(mat, new Scalar(225), point);
 		
 		//image complement
 		Mat invertedMat = new Mat();
@@ -87,12 +85,11 @@ public abstract class GeneralDetector {
 	/*
 	 * Flood fill
 	 */
-	private Mat floodFill(Mat mat, Scalar color) {
+	public static Mat floodFill(Mat mat, Scalar color, Point point) {
 		Mat clone = mat.clone();
-		Point point2Fill = new Point(0,clone.height() * 0.75);
 	    Mat mask = new Mat(clone.rows() + 2, clone.cols() + 2, CvType.CV_8UC1);
 	    
-	    Imgproc.floodFill(clone, mask, point2Fill, color);
+	    Imgproc.floodFill(clone, mask, point, color);
 	    
 	    return clone;
 	}
