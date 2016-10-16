@@ -1,0 +1,207 @@
+package team_identifier;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
+public class ImageProcessor {
+	private ArrayList<Mat> frames;
+
+	
+	public ImageProcessor(ArrayList<Mat> frames){
+		this.frames = frames;
+	}
+   /* 	
+	public ArrayList<Mat> process(){
+		ArrayList<Mat> processedFrames = new ArrayList<Mat>();
+		
+		for(Mat frame:frames){
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+			temp = getRange(temp); 
+			temp = dilate(temp);
+			temp = imfill(temp);
+			temp = bwareopen(temp);
+			processedFrames.add(temp);
+		}
+		
+		return processedFrames;
+	}
+	*/
+	public ArrayList<Mat> process(){
+		ArrayList<Mat> processedFrames = new ArrayList<Mat>();
+		
+		for(Mat frame:frames){
+			Mat temp = convertRgb2Hsv(frame); 
+			temp = normalizeFrame(temp);
+			temp = stdfilt(temp);
+			processedFrames.add(temp);
+		}
+		
+		return processedFrames;
+	}
+	
+	  
+	/**
+   * Convert RGB Mat to HSV
+   * @param X: RGB Image (Mat)
+   * @return - HSV Image (Mat)
+   */
+	public Mat convertRgb2Hsv(Mat frame) {
+		Mat frameHsv = new Mat(frame.height(), frame.width(), frame.type());
+		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
+		return frameHsv;
+	}
+	
+	/**
+   * Extract Hue Channel from HSV image
+   * @param X: HSV Image (Mat)
+   * @return - Hue Channel of the image (Mat)
+   */
+	public Mat getHueChannel(Mat hsv){
+		List<Mat> channels = new Vector<Mat>();
+		Core.split(hsv, channels);
+		
+		return channels.get(0);
+	}
+		
+	/**
+   * Creates a binary mask of green pixels of an image.
+   * @param X: Hue Channel of a HSV Image.
+   * @return - A mask of green pixels (Mat).
+   */
+	public Mat getRange(Mat image){
+		Mat mask = new Mat();
+		
+		Scalar lowerGreen = new Scalar(18, 100, 50);
+		Scalar upperGreen = new Scalar(93, 255, 255);
+
+		Core.inRange(image, lowerGreen, upperGreen, mask);
+		
+		return mask;		
+	}
+	
+	// Field Detector 
+	
+	/**
+     * Find and fill the contours of the players in the field.
+     * @param: Image to be filled (Mat).
+     * @return - Image with the holes filled (Mat).
+     */
+	public Mat imfill(Mat mask){
+		Mat result, hierarchy, destiny;
+		result = new Mat(mask.rows(), mask.cols(), mask.type());
+		destiny = new Mat(mask.rows(), mask.cols(), mask.type());
+		hierarchy = new Mat();
+		
+		ArrayList<MatOfPoint> contours = new ArrayList<>();
+		Core.bitwise_not(mask, result);
+		Imgproc.findContours(result, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+		
+		for(MatOfPoint contour:contours){
+			ArrayList<MatOfPoint> list = new ArrayList<>();
+			list.add(contour);
+			Imgproc.drawContours(result, list, 0, new Scalar(255),-1);
+		}
+		Core.bitwise_not(result, destiny);
+		return destiny;
+	}
+	
+	/**
+     * Fill small spurious regions 
+     * @param X: Image to be filled (Mat).
+     * @return - Image with small regions filled (Mat).
+     */
+	public Mat bwareopen(Mat mask){
+		Core.bitwise_not(mask, mask);
+		Mat result = imfill(mask);
+		Core.bitwise_not(result, result);
+		return result;
+	}
+	
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat dilate(Mat hsv){
+		int dilation_size = 2;
+		Mat result = new Mat(hsv.rows(), hsv.cols(), hsv.type());
+		
+		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(2*dilation_size + 1, 2*dilation_size+1));
+        Imgproc.dilate(hsv, result, kernel);
+    
+        return result;
+
+	}
+	
+	// Soccer Players Detection
+	
+	
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat truncate(Mat image){
+		Mat result = new Mat(image.rows(), image.cols(), image.type());
+
+        result = image;
+        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
+        return result;
+	}
+	
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat normalizeFrame(Mat hsv){
+		int cols = hsv.cols();
+		int rows = hsv.rows();
+
+		Mat dest = new Mat(rows, cols, hsv.type());
+			
+		for(int row = 0; row<rows; row++){
+			for(int col = 0; col<cols; col++){
+				double[] channels = hsv.get(row, col);
+				double[] normalizedChannels = new double[]{(int)((channels[0]/360) * 255), 0, 0};
+                dest.put(row, col, normalizedChannels);
+			}			
+		}
+		return dest;
+	}
+	
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */	
+	public Mat stdfilt(Mat image){
+	  Mat image32f = new Mat();
+	  image.convertTo(image32f, CvType.CV_32F);
+
+	  Mat mu = new Mat();
+	  Mat mu2 = new Mat();
+	  Imgproc.blur(image32f, mu, new Size(3, 3));
+      Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
+
+      Mat sigma = new Mat();
+      Mat src = new Mat();
+	      
+      Core.subtract(mu2, mu.mul(mu), src);
+      Core.sqrt(src, sigma);
+	      
+      Mat image2 = new Mat();
+	  sigma.convertTo(image2, image.type());
+	      
+      return image2;
+	}
+}

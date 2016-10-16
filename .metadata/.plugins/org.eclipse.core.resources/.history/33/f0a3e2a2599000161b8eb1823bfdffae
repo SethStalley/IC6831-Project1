@@ -1,0 +1,25 @@
+package team_identifier;
+
+import java.util.ArrayList;
+
+import org.opencv.core.Mat;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Video video = new Video("/Users/lucychaves/Desktop/cut1_360.mp4");
+		ArrayList<Mat> frames  = new ArrayList<Mat>();
+		
+		frames = video.readVideo();
+		
+		System.out.println("Frames: "+ frames.size());
+
+	     for(Mat frame: frames){
+	         Imshow im = new Imshow("Display");
+	         im.showImage(frame);
+
+	        }
+
+	}
+
+}

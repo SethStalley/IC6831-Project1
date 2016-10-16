@@ -1,8 +1,15 @@
 # Sport Analytics
+======
 Sistema que segmenta y clasifica por equipo los jugadores de fútbol en un video digital.
 
 # Requerimientos
 1. JDK 8.1 o superior
+<<<<<<< HEAD
+2. Eclipse Neon EE
+3. OpenCV-3.1
+
+# Instalación OpenCV 3.1
+=======
 2. Eclipse Neon Jee
 3. OpenCV-3.1
 
@@ -16,5 +23,7 @@ Sistema que segmenta y clasifica por equipo los jugadores de fútbol en un video
 # Ejecución del sistema
 - Clone o descargue este repositorio.
 - Importe el proyecto en Eclipse como un proyecto de Maven.
-
-
+<<<<<<< HEAD
+- Para levantar el servidor, ejecute "Aplication".
+- Abra su navegador y acceda a localhost:8080
+=======

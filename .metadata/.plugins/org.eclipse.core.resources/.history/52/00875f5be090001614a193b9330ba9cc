@@ -1,0 +1,10 @@
+package team_identifier;
+
+import java.util.ArrayList;
+
+import org.opencv.core.Mat;
+
+public abstract class Detector {
+	
+	public abstract void Detect(ArrayList<Mat> frames);
+}

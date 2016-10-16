@@ -1,5 +1,8 @@
 videos/*
+.metadata/*
 
 videos/uploaded/gs-rest-service-master.zip
 
 videos/uploaded/gs-rest-service-master.zip
+*.java
+*.mp4

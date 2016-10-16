@@ -1,0 +1,166 @@
+package team_identifier;
+
+import java.util.ArrayList;
+
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
+public class PlayerDetector extends GeneralDetector{
+	private ArrayList<Mat> processedPlayers;
+	
+	public PlayerDetector(){
+		this.processedPlayers = new ArrayList<Mat>();
+	}
+	
+	/**
+	* Deletes all values below that value.
+	* @param X: 
+	* @return -
+	*/	
+	@Override
+	public void Detect(ArrayList<Mat> frames) {		
+		for(Mat frame:frames){
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+			temp = normalizeImage(temp);
+		    temp = stdfilt(temp);
+		 //   temp = dilate(temp);
+		 //   temp = im2bw(temp);
+		    temp = truncate(temp);
+		    temp = imfill(temp);
+		  
+		  //  filledImage.convertTo(filledImage, 0);
+			this.processedPlayers.add(temp);
+		}
+	
+	}
+	
+	  /**
+	  * Deletes all values below that value.
+      * @param X: 
+	  * @return -
+	  */	
+	  private double graythresh(Mat image) {
+		    Mat clone = image.clone();
+		    clone.convertTo(clone, CvType.CV_8UC1);
+		    double umbral = Imgproc.threshold(clone, clone, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
+		    return umbral;
+		  }
+
+		/**
+		* Deletes all values below that value.
+		* @param X: 
+		* @return -
+		*/	  	  
+	  private Mat im2bw(Mat image) {
+		    double umbral = graythresh(image);
+		    Mat clone = image.clone();
+		    Imgproc.threshold(clone, clone, umbral, 255, Imgproc.THRESH_BINARY);
+		    return clone;
+	  }
+	
+	/**
+	* 
+	* @param X: 
+	* @return -
+	*/
+	public Mat normalizeImage(Mat hsv){
+		int cols = hsv.cols();
+		int rows = hsv.rows();
+
+		Mat dest = new Mat(rows, cols, hsv.type());
+			
+		for(int row = 0; row<rows; row++){
+			for(int col = 0; col<cols; col++){
+				double[] channels = hsv.get(row, col);
+				double[] normalizedChannels = new double[]{(int)((channels[0]/360) * 255), 0, 0};
+                dest.put(row, col, normalizedChannels);
+			}			
+		}
+		return dest;
+	}
+
+	/**
+	* Calculates local variance.
+	* @param X: H channel of HSV (Mat)
+	* @return - Image corresponding to the local variance
+	*/	
+
+	private Mat stdfilt(Mat image) {
+	    Mat hueChannel = new Mat();
+	    hueChannel = normalizeImage(hueChannel);
+	    hueChannel.convertTo(hueChannel, CvType.CV_32F);
+
+	    Mat mu = hueChannel.clone();
+	    Imgproc.blur(hueChannel, mu, new Size(3, 3));
+	    
+	    Mat hueChannel2 = new Mat();
+	    hueChannel2 = hueChannel2.clone();
+	    Core.multiply(hueChannel, hueChannel, hueChannel2);
+	    
+	    Mat mu2 = hueChannel2.clone();
+	    Imgproc.blur(hueChannel2, mu2, new Size(3, 3));
+	    
+	    Mat mu22 = mu.clone();
+	    Core.multiply(mu, mu, mu22);
+	    
+	    Mat sub = mu2.clone();
+	    Core.subtract(mu2, mu22, sub);
+	    
+	    Mat standard = sub.clone();
+	    Core.sqrt(sub, standard);
+	    
+	    Mat variance = standard.clone();
+	    Core.multiply(standard, standard, variance);
+
+	    return variance;
+	  }
+
+	
+	/**
+	* Calculates local variance.
+	* @param X: H channel of HSV (Mat)
+	* @return - Image corresponding to the local variance
+	*/	
+/*
+	private Mat stdfilt(Mat image) {
+		  Mat image32f = new Mat();
+		  image.convertTo(image32f, CvType.CV_32F);
+
+		  Mat mu = new Mat();
+		  Mat mu2 = new Mat();
+		  Imgproc.blur(image32f, mu, new Size(3, 3));
+	      Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
+
+	      Mat sigma = new Mat();
+	      Mat src = new Mat();
+	      
+	      Core.subtract(mu2, mu.mul(mu), src);
+	      Core.sqrt(src, sigma);
+	      
+	      Mat image2 = new Mat();
+		  sigma.convertTo(image2, image.type());
+	      
+	      return image2;
+	  }	
+*/	
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat truncate(Mat image){
+		Mat result = new Mat(image.rows(), image.cols(), image.type());
+
+        result = image;
+        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
+        return result;
+	}
+	
+	public ArrayList<Mat> getProcessedPlayers(){
+		return this.processedPlayers;
+	}
+
+}

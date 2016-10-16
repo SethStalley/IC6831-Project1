@@ -1,0 +1,145 @@
+package team_identifier;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
+public class PlayerDetector extends GeneralDetector{
+	private ArrayList<Mat> processedPlayers;
+	
+	public PlayerDetector(){
+		this.processedPlayers = new ArrayList<Mat>();
+	}
+	
+	
+	@Override
+	public void Detect(ArrayList<Mat> frames) {		
+		for(Mat frame:frames){
+			Mat temp = getHueChannel(convertRgb2Hsv(frame)); 
+			temp = normalizeImage(temp);
+		    temp = stdfilt(temp);
+	//	    temp = dilate(temp);
+	//	    temp = truncate(temp);
+			this.processedPlayers.add(temp);
+		}
+	
+	}
+
+	
+	/**
+	* 
+	* @param X: 
+	* @return -
+	*/
+	private Mat normalizeImage(Mat image) {
+		 Core.normalize(image, image, 0, 255, Core.NORM_MINMAX);
+		 return image;
+	}
+
+	/**
+	* Calculates local variance.
+	* @param X: H channel of HSV (Mat)
+	* @return - Image corresponding to the local variance
+	*/	 
+	private Mat stdfilt(Mat image) {
+		  Mat image32f = new Mat();
+		  image.convertTo(image32f, CvType.CV_32F);
+
+		  Mat mu = new Mat();
+		  Mat mu2 = new Mat();
+		  Imgproc.blur(image32f, mu, new Size(3, 3));
+	      Imgproc.blur(image32f.mul(image32f), mu2, new Size(3, 3));
+
+	      Mat sigma = new Mat();
+	      Mat src = new Mat();
+	      
+	      Core.subtract(mu2, mu.mul(mu), src);
+	      Core.sqrt(src, sigma);
+	      
+	      Mat image2 = new Mat();
+		  sigma.convertTo(image2, image.type());
+	      
+	      return image2;
+	  }	
+
+
+	/**
+     * 
+     * @param X: 
+     * @return -
+     */
+	public Mat truncate(Mat image){
+		Mat result = new Mat(image.rows(), image.cols(), image.type());
+
+        result = image;
+        Imgproc.threshold(image, result, 0, 255, Imgproc.THRESH_OTSU);
+        return result;
+	}
+	
+	public ArrayList<Mat> getProcessedPlayers(){
+		return this.processedPlayers;
+	}
+
+	  public Mat fillContours(Object image, Object contours, Object color) {
+		    Mat imageMat = (Mat) image;
+		    Mat clonedImage = imageMat.clone();
+		    Imgproc.drawContours(clonedImage, (List<MatOfPoint>) contours, -1, (Scalar)color,-1);
+		    return clonedImage;
+		  }
+	  
+	  public List<MatOfPoint> findContours(Object image) {
+		    List<MatOfPoint> contours = new ArrayList<>();//all contorus are saved here
+		    Imgproc.findContours((Mat) image, contours, new Mat(), 
+		        Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE, new Point(0,0));
+		    return contours;
+		  }
+	  
+	  public Mat complement(Object image) {
+		    Mat invertedImage = new Mat();
+		    Core.bitwise_not((Mat) image, invertedImage);//image complement
+		    return invertedImage;
+		  }
+	  
+	  public Mat or(Object image1, Object image2) {
+		    Mat orImage = new Mat();
+		    Core.bitwise_or((Mat) image1, (Mat) image2, orImage);//or between images
+		    return orImage;
+		  }
+	  
+	  public Mat floodFill(Object image, Object point, Object color) {
+		    Mat matImage = (Mat) image;
+		    Mat matImageClone = matImage.clone();
+		    Mat mask = new Mat(matImageClone.rows() + 2, matImageClone.cols() + 2, CvType.CV_8UC1);
+		    Imgproc.floodFill(matImageClone, mask, (Point) point, (Scalar) color);
+		    //starts to fill in point
+		    return matImageClone;
+		  }
+	  
+	  
+	  public Mat paintPlayers(Mat field, Mat players) {
+	    Mat finalImage = new Mat();
+	    Mat playersMat = getPlayers(field, players);//gets all players
+	    List<MatOfPoint> contours = new ArrayList<>();//all contours of players are saved here
+	    contours = findContours(playersMat);
+	    if (!contours.isEmpty()) {
+	      finalImage = fillContours(finalImage, contours, new Scalar(0,0,222));//fill all players
+	    }
+	    return finalImage;
+	  }
+
+
+	  public Mat getPlayers(Mat field, Mat players) {
+	    Mat invertedField = complement(field);
+	    Mat playersMat = or(invertedField, (Mat)players);//invert and or to get the blobs in the field
+	    playersMat = floodFill(playersMat, new Point(0,0), new Scalar(0));
+	    return playersMat;
+	  }
+}
