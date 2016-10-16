@@ -27,7 +27,7 @@ public abstract class GeneralDetector {
 	 * @param frame Mat
 	 * @return - HSV Image (Mat)
 	 */
-	protected Mat convertRgb2Hsv(Mat frame) {
+	public Mat convertRgb2Hsv(Mat frame) {
 		Mat frameHsv = new Mat(frame.size(),frame.type());
 		Imgproc.cvtColor(frame, frameHsv, Imgproc.COLOR_RGB2HSV);
 		return frameHsv;
@@ -39,7 +39,7 @@ public abstract class GeneralDetector {
 	 * @param hsv Mat
 	 * @return - Hue Channel of the image (Mat)
 	 */
-	protected Mat getHueChannel(Mat hsv) {
+	public Mat getHueChannel(Mat hsv) {
 		Vector<Mat> channels = new Vector<Mat>();
 		Core.split(hsv, channels);
 

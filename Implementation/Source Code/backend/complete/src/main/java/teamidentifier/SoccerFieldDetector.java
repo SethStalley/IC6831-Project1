@@ -8,6 +8,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 /**
@@ -31,6 +32,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 			temp = dilate(temp);
 			temp = imfill(temp, new Point(0,0));
 			temp = bwareopen(temp);
+			
 			Core.bitwise_not(temp, temp);
 			temp = dilate(temp);
 			temp = dilate(temp);
@@ -38,7 +40,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 			temp = dilate(temp);
 			temp = dilate(temp);
 			temp = dilate(temp);
-			temp = bwareopen(temp);
+			
 			Core.bitwise_not(temp, temp);
 			
 			temp = removeLogo(temp);
