@@ -36,7 +36,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	/**
 	 * Detects the soccer field in the image.
 	 *
-	 * @param frames (ArrayList<Mat>).
+	 * @param frames: List of the video frames (ArrayList<Mat>).
 	 */
 	@Override
 	public void Detect(ArrayList<Mat> frames) {
@@ -67,7 +67,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 
 	/**
 	 * Creates a binary mask of green pixels of an image.
-	 * @param image (Mat)
+	 * @param image: the image to extract the green pixels. Must be in RGB format (Mat).
 	 * @return - A mask of green pixels (Mat).
 	 */
 	protected Mat getRange(Mat image) {
@@ -84,7 +84,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	/**
 	 * Fill small spurious regions
 	 * 
-	 * @param mask (Mat).
+	 * @param mask: the image with the pixels detected (Mat).
 	 * @return - Image with small regions filled (Mat).
 	 */
 	public Mat bwareopen(Mat mask) {
@@ -113,7 +113,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	/**
 	 * Removes the logo of the image.
 	 * 
-	 * @param image Mat
+	 * @param image: The image with the logo (Mat).
 	 * @return - Image without logo (Mat).
 	 */
 	private Mat removeLogo(Mat image) {
