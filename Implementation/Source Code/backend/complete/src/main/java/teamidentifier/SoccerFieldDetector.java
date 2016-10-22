@@ -1,3 +1,7 @@
+/*
+ * @author Lucy Chaves - Seth Stalley
+ * @version v1.1.1
+ */
 package teamidentifier;
 
 import java.util.ArrayList;
@@ -11,18 +15,28 @@ import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
-/**
+/*
+ * The purpose of this class is to detect the soccer field.
+ * The whole algorithm was taken from the Project Specification written by Saul Calderón.
+ * Players must have their uniform different to green.
+ * The soccer field must be green.
  */
 public class SoccerFieldDetector extends GeneralDetector {
 	private ArrayList<Mat> processedFields;
 
+	/**
+  	* Instantiates a new soccer field detector.
+    	*
+  	* 
+  	*/
 	public SoccerFieldDetector() {
 		this.processedFields = new ArrayList<Mat>();
 	}
 
 	/**
-	 * Method Detect.
-	 * @param frames ArrayList<Mat>
+	 * Detects the soccer field in the image.
+	 *
+	 * @param frames (ArrayList<Mat>).
 	 */
 	@Override
 	public void Detect(ArrayList<Mat> frames) {
@@ -53,7 +67,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 
 	/**
 	 * Creates a binary mask of green pixels of an image.
-	 * @param image Mat
+	 * @param image (Mat)
 	 * @return - A mask of green pixels (Mat).
 	 */
 	protected Mat getRange(Mat image) {
@@ -70,9 +84,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	/**
 	 * Fill small spurious regions
 	 * 
-	 * 
-	 * @param mask
-	 *            Mat
+	 * @param mask (Mat).
 	 * @return - Image with small regions filled (Mat).
 	 */
 	public Mat bwareopen(Mat mask) {
