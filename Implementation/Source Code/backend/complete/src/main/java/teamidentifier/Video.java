@@ -1,3 +1,7 @@
+/*
+ * @author Lucy Chaves - Seth Stalley
+ * @version v1.1.1
+ */
 package teamidentifier;
 
 import java.io.FileNotFoundException;
@@ -14,7 +18,8 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.VideoWriter;
 
 /**
- */
+* The purpose of this class is to read, process and generates the final video with the players detection.
+*/
 public class Video {
 	private String path;
 	public ArrayList<Mat> frames;
@@ -22,7 +27,7 @@ public class Video {
 	/**
 	 * Constructor for Video.
 	 * 
-	 * @param path String
+	 * @param The file path of the video to analyze (String).
 	 */
 	public Video(String path) {
 		this.path = path;
@@ -43,7 +48,6 @@ public class Video {
 		if (!cap.isOpened()) {
 			throw new FileNotFoundException();
 		}
-		//int numFrames = (int) cap.get(CV_CAP_PROP_FRAME_COUNT);
 	
 		while (true) {
 			Mat mat = new Mat();
@@ -76,6 +80,36 @@ public class Video {
 		videoWriter.release();
 	}
 
+	private void freeMats(ArrayList<Mat> mats) {
+		 for(Mat mat : mats) {
+			 mat.release();
+		 }
+		 mats.clear();
+	 }
+	 
+	  private Mat getFinalMat(Mat field, Mat player) {	
+		Mat result = player.clone();
+		Core.bitwise_and(result, field, result);
+	    return result;
+	  }
+	 
+	  /**
+ 	  * Complements an image.
+ 	  *
+  	  * @param The image in binary format (Mat).
+ 	  * @return The image in binary format inverted (Mat).
+  	  */
+	  private Mat complement(Mat mat) {
+		  Mat invertedMat = new Mat();
+		  Core.bitwise_not(mat, invertedMat);
+		  return invertedMat;
+	  }
+	
+	  /**
+ 	  * Segmentates the players of the video.
+ 	  *
+  	  * 
+  	  */
 	 public void segmentate(){
 	
 		 PlayerDetector playerDetector = new PlayerDetector();
@@ -101,26 +135,4 @@ public class Video {
 		 System.out.println("Segment done");
 	 }
 	 
-	 private void freeMats(ArrayList<Mat> mats) {
-		 for(Mat mat : mats) {
-			 mat.release();
-		 }
-		 mats.clear();
-	 }
-	 
-	  private Mat getFinalMat(Mat field, Mat player) {	
-		Mat result = player.clone();
-		Core.bitwise_and(result, field, result);
-	    return result;
-	  }
-	  
-	  private Mat complement(Mat mat) {
-		  Mat invertedMat = new Mat();
-		  Core.bitwise_not(mat, invertedMat);
-		  return invertedMat;
-	  }
-
-	 
-
-
 }
