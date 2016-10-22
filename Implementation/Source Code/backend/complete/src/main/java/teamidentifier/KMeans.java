@@ -1,7 +1,9 @@
+/*
+ * @author Seth Stalley
+ * @version v1.1.1
+ */
 package teamidentifier;
 
-/**
- */
 public class KMeans {
 	// Number of clusters, we default to 2 because there are two soccer teams.
 	private int NUM_CLUSTERS = 2;
@@ -16,7 +18,7 @@ public class KMeans {
 	}
 
 	/**
-	 * // Calculate Bhattacharyya distance.
+	 * Calculate Bhattacharyya distance.
 	 * 
 	 * @param X double[]
 	 * @param U double[]
