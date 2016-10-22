@@ -38,6 +38,7 @@ public abstract class GeneralDetector {
 
 	/**
 	 * Extract Hue Channel from HSV image
+	 *
 	 * @param Must be a HSV Image (Mat). 
 	 * @return - Hue Channel of the image (Mat)
 	 */
