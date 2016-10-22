@@ -20,14 +20,14 @@ public abstract class GeneralDetector {
 	/**
 	 * Abstract Method Detect.
 	 * 
-	 * @param frames ArrayList<Mat>
+	 * @param frames: A list of the video frames ArrayList<Mat>
 	 */
 	public abstract void Detect(ArrayList<Mat> frames);
 
 	/**
 	 * Convert RGB Mat to HSV
 	 *
-	 * @param frame (Mat)
+	 * @param frame: Image in RGB format (Mat).
 	 * @return - HSV Image (Mat)
 	 */
 	public Mat convertRgb2Hsv(Mat frame) {
@@ -39,7 +39,7 @@ public abstract class GeneralDetector {
 	/**
 	 * Extract Hue Channel from HSV image
 	 *
-	 * @param Must be a HSV Image (Mat). 
+	 * @param hsv: Must be a HSV Image (Mat). 
 	 * @return - Hue Channel of the image (Mat)
 	 */
 	public Mat getHueChannel(Mat hsv) {
@@ -52,7 +52,7 @@ public abstract class GeneralDetector {
  	/**
   	* Dilates image.
   	*
-   	* @param Image of the video in binary format. (Mat)
+   	* @param image: Image of the video in binary format. (Mat)
   	* @return The image dilated, in the format which entered.
    	*/
 	protected Mat dilate(Mat image) {
@@ -61,12 +61,13 @@ public abstract class GeneralDetector {
 		return dilatedMat;
 	}
 
-	/**
-	 * Find and fill the contours of the players in the field.
-	 * 
-	 * @param mask (Mat)
-	 * @return - Image with the holes filled (Mat).
-	 */
+ 	 /**
+  	 * Fill holes inside the image.
+  	 *
+  	 * @param mat: image to be filled. Must be in binary format. (Mat).
+  	 * @param point: point to the background of the image.
+   	 * @return the opencv mat, with the holes filled. In binary format. (Mat).
+  	 */
 	public static Mat imfill(Mat mat, Point point) {
 		
 		// Flood fill black color
@@ -84,9 +85,9 @@ public abstract class GeneralDetector {
   	/**
    	* Flood fills an image.
    	*
-   	* @param Image in any format (Mat).
-   	* @param The color which want to be painted. (Scalar)
-	* @param The point where to start flood filling. (Point)
+   	* @param mat: Image in any format (Mat).
+   	* @param color: The color which want to be painted. (Scalar)
+	* @param point: The point where to start flood filling. (Point)
    	* @return The image floodfilled. (Mat)
    	*/
 	public static Mat floodFill(Mat mat, Scalar color, Point point) {
