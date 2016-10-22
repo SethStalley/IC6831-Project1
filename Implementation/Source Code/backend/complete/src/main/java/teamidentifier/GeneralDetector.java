@@ -1,3 +1,7 @@
+/*
+ * @author Lucy Chaves - Seth Stalley
+ * @version v1.1.1
+ */
 package teamidentifier;
 
 import org.opencv.core.Core;
@@ -10,12 +14,11 @@ import org.opencv.imgproc.Imgproc;
 import java.util.ArrayList;
 import java.util.Vector;
 
-/**
- */
+
 public abstract class GeneralDetector {
 
 	/**
-	 * Method Detect.
+	 * Abstract Method Detect.
 	 * 
 	 * @param frames ArrayList<Mat>
 	 */
@@ -23,8 +26,8 @@ public abstract class GeneralDetector {
 
 	/**
 	 * Convert RGB Mat to HSV
-	 * 
-	 * @param frame Mat
+	 *
+	 * @param frame (Mat)
 	 * @return - HSV Image (Mat)
 	 */
 	public Mat convertRgb2Hsv(Mat frame) {
@@ -35,8 +38,7 @@ public abstract class GeneralDetector {
 
 	/**
 	 * Extract Hue Channel from HSV image
-	 * 
-	 * @param hsv Mat
+	 * @param Must be a HSV Image (Mat). 
 	 * @return - Hue Channel of the image (Mat)
 	 */
 	public Mat getHueChannel(Mat hsv) {
@@ -45,14 +47,13 @@ public abstract class GeneralDetector {
 
 		return channels.get(0);
 	}
-	
-	
 
-	/**
-	 * 
-	 * @param image Mat
-	 * @return -
-	 */
+ 	/**
+  	* Dilates image.
+  	*
+   	* @param Image of the video in binary format. (Mat)
+  	* @return The image dilated, in the format which entered.
+   	*/
 	protected Mat dilate(Mat image) {
 		Mat dilatedMat = new Mat();
 		Imgproc.dilate(image, dilatedMat, new Mat());
@@ -62,16 +63,16 @@ public abstract class GeneralDetector {
 	/**
 	 * Find and fill the contours of the players in the field.
 	 * 
-	 * @param mask Mat
+	 * @param mask (Mat)
 	 * @return - Image with the holes filled (Mat).
 	 */
 	public static Mat imfill(Mat mat, Point point) {
 		
-		//flood fill black color
+		// Flood fill black color
 		Imgproc.rectangle(mat, new Point(0,0), new Point(50,50), new Scalar(0));
 		Mat floodFilled = floodFill(mat, new Scalar(255), point);
 		
-		//image complement
+		// Image complement
 		Mat invertedMat = new Mat();
 		Core.bitwise_not(floodFilled, invertedMat);
 		Core.bitwise_xor(mat,invertedMat,mat);
@@ -79,9 +80,14 @@ public abstract class GeneralDetector {
 		return mat;
 	}
 	
-	/*
-	 * Flood fill
-	 */
+  	/**
+   	* Flood fills an image.
+   	*
+   	* @param Image in any format (Mat).
+   	* @param The color which want to be painted. (Scalar)
+	* @param The point where to start flood filling. (Point)
+   	* @return The image floodfilled. (Mat)
+   	*/
 	public static Mat floodFill(Mat mat, Scalar color, Point point) {
 		Mat clone = mat.clone();
 	    Mat mask = new Mat(clone.rows() + 2, clone.cols() + 2, CvType.CV_8UC1);
