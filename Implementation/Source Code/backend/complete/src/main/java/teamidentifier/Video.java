@@ -27,7 +27,7 @@ public class Video {
 	/**
 	 * Constructor for Video.
 	 * 
-	 * @param The file path of the video to analyze (String).
+	 * @param path: The file path of the video to analyze (String).
 	 */
 	public Video(String path) {
 		this.path = path;
@@ -64,7 +64,7 @@ public class Video {
 	/**
 	 * Writes frames as to an mp4 video.
 	 * 
-	 * @param mats ArrayList<org.bytedeco.javacpp.opencv_core.Mat>
+	 * @param mats: list of mats to make the video. 
 	 * @param outputFile String
 	 */
 	public void writeVideo(ArrayList<Mat> mats, String outputFile) {
@@ -96,7 +96,7 @@ public class Video {
 	  /**
  	  * Complements an image.
  	  *
-  	  * @param The image in binary format (Mat).
+  	  * @param mat: The image in binary format (Mat).
  	  * @return The image in binary format inverted (Mat).
   	  */
 	  private Mat complement(Mat mat) {
