@@ -34,7 +34,7 @@ public class PlayerDetector extends GeneralDetector {
 	/**
 	 * Detects players in the soccer field.
 	 * 
-	 * @param frames ArrayList<Mat>
+	 * @param frames: List of the video frames ArrayList<Mat>
 	 */
 	@Override
 	public void Detect(ArrayList<Mat> frames) {
@@ -56,7 +56,7 @@ public class PlayerDetector extends GeneralDetector {
   	/**
   	 * Normalize an image between 2 values
   	 * Uses OpenCV function: http://docs.opencv.org/java/2.4.2/org/opencv/core/Core.html
-  	 * @param The Image to be normalized, must be in one channel (Mat).
+  	 * @param image: The Image to be normalized, must be in one channel (Mat).
   	 * @return The normalized OpenCV image (Mat).
   	 */
 	private Mat normalizeImage(Mat image) {
@@ -67,7 +67,7 @@ public class PlayerDetector extends GeneralDetector {
 	/**
   	* Gets optimum threshold of a binary image.
    	* Uses opencv function: http://docs.opencv.org/java/2.4.9/org/opencv/imgproc/Imgproc.html
-   	* @param The image to get its optimum threshold. In binary format (Mat).
+   	* @param mat: The image to get its optimum threshold. In binary format (Mat).
    	* @return A double with the optimum threshold.
    	*/	
 	private double graythresh(Mat mat) {
@@ -81,7 +81,7 @@ public class PlayerDetector extends GeneralDetector {
 	/**
 	 * Calculates local variance.
 	 * 
-	 * @param The image to get its local variance (Mat).
+	 * @param image: The image to get its local variance (Mat).
 	 * @return - Image corresponding to the local variance (Mat).
 	 */
 	private Mat stdfilt(Mat image) {
@@ -108,7 +108,7 @@ public class PlayerDetector extends GeneralDetector {
 	/** 
 	 * Truncates an image.
 	 * Uses opencv function: http://docs.opencv.org/java/2.4.9/org/opencv/imgproc/Imgproc.html
-	 * @param The image to be truncated (Mat).
+	 * @param image: The image to be truncated (Mat).
 	 * @return - The truncated image (Mat).
 	 */
 	public Mat truncate(Mat image) {
