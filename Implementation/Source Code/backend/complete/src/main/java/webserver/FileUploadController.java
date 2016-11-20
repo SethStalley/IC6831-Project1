@@ -60,6 +60,38 @@ public class FileUploadController {
 
 		return message;
 	}
+	
+	/**
+	 * Method handleGroundTruthFile.
+	 * 
+	 * @param file MultipartFile
+	 * @param redirectAttributes RedirectAttributes
+	 * @return String
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "/postGroundTruth")
+	@ResponseBody
+	public String handleGroundTruthFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+		String message = "";
+
+		if (!file.isEmpty()) {
+			try {
+
+				Files.copy(file.getInputStream(), Paths.get(ROOT, file.getOriginalFilename()), REPLACE_EXISTING);
+				message = "Se subio " + file.getOriginalFilename() + " de forma exitosa!";
+
+
+			} catch (IOException | RuntimeException e) {
+				e.printStackTrace();
+				message = "Hubo un problema subiendo " + file.getOriginalFilename() + " => " + e.getMessage();
+			}
+		} else {
+			message = "No se pudo subir " + file.getOriginalFilename() + " porque el archivo es vacio";
+		}
+		System.out.println(message);
+
+		return message;
+	}
 
 	/**
 	 * Process a soccer video and create a new video file with segmented
