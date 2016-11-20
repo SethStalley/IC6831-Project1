@@ -23,8 +23,18 @@
 
         <div class="col-md-8">
 
-            <h3>Videos por Analizar</h3>
-            <p>Cantidad: {{ uploader?.queue?.length }}</p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Upload Ground Truth</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="file" ng2FileSelect [uploader]="groundTruthUploader" />
+                    <button type="button" class="btn btn-success btn-xs"
+                                (click)="groundTruthUploader.queue[0].upload()">
+                            <span class="glyphicon glyphicon-upload"></span> Subir
+                        </button>
+                </div>
+            </div>
 
             <table class="table">
                 <thead>

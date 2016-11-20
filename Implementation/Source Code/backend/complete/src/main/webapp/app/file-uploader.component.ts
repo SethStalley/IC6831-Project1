@@ -5,6 +5,7 @@ import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 
 // static URL to send out file to;
 const URL = 'http://localhost:8080/postFile';
+const GROUND_TRUTH_URL = 'http://localhost:8080/postGroundTruth';
 
 @Component({
   selector: 'file-upload',
@@ -15,15 +16,14 @@ const URL = 'http://localhost:8080/postFile';
 export class FileUploder {
   fileName:string;  
   public uploader:FileUploader = new FileUploader({url: URL, method: 'showVide'});
+  public groundTruthUploader:FileUploader = new FileUploader({url: GROUND_TRUTH_URL});
   public hasBaseDropZoneOver:boolean = false;
 
   constructor() {
      this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-          //console.log("VideoUpload:uploaded:", item,response, status);  
           var fileName : string = item.some['name'];
           console.log(fileName);
-          this.setFileName(fileName);
-
+          this.setFileName(fileName)
      };
   }
 
@@ -35,19 +35,3 @@ export class FileUploder {
   }
 
 }
-
-
-
-  // //Notify Users
-  // addToast(msg:string) {
-  //   if(msg==""){
-  //     msg = "No hay conneción al servidor!"
-  //   }
-  //   this.toastyService.info({
-  //       title: "",
-  //       msg: msg,
-  //       showClose: true,
-  //       timeout: 5000,
-  //       theme: "material"
-  //   });
-  // };
