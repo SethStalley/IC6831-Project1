@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import teamidentifier.GroundTruth;
 import teamidentifier.Video;
 
 /**
@@ -25,7 +26,9 @@ public class FileUploadController {
 
 	String dir = System.getProperty("user.dir");
 	String ROOT = dir.substring(0, dir.lastIndexOf("backend")) + "backend/complete/src/main/webapp/videos";
-
+	
+	String videoPath;
+	
 	/**
 	 * Method handleFileUpload.
 	 * 
@@ -44,7 +47,8 @@ public class FileUploadController {
 
 				Files.copy(file.getInputStream(), Paths.get(ROOT, file.getOriginalFilename()), REPLACE_EXISTING);
 				message = "Se subio " + file.getOriginalFilename() + " de forma exitosa!";
-
+				
+				
 				// Process video for testing
 				proccessVideo(ROOT + '/' + file.getOriginalFilename());
 			} catch (FileAlreadyExistsException e) {
@@ -79,6 +83,9 @@ public class FileUploadController {
 
 				Files.copy(file.getInputStream(), Paths.get(ROOT, file.getOriginalFilename()), REPLACE_EXISTING);
 				message = "Se subio " + file.getOriginalFilename() + " de forma exitosa!";
+				if(this.videoPath != ""){
+					 compareWithGroundTruth(ROOT + '/' + file.getOriginalFilename());
+				}
 
 
 			} catch (IOException | RuntimeException e) {
@@ -107,9 +114,26 @@ public class FileUploadController {
 			video.segmentate();
 			video.writeVideo(video.frames, videoPath);
 			
+			//this.videoPath = videoPath;
+			
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	private void compareWithGroundTruth(String groundTruthPath){
+		GroundTruth groundTruth = new GroundTruth();
+		if(this.videoPath != ""){
+			try {
+				double diceIndex = groundTruth.compareWithGroundTruth(this.videoPath, groundTruthPath);
+				System.out.println("Promedio del indice Dice de los frames: " + diceIndex);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
