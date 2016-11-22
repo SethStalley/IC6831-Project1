@@ -70,7 +70,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	 * @param image: the image to extract the green pixels. Must be in RGB format (Mat).
 	 * @return - A mask of green pixels (Mat).
 	 */
-	protected Mat getRange(Mat image) {
+	public Mat getRange(Mat image) {
 		Mat mask = image.clone();
 
 		Scalar lowerGreen = new Scalar(18, 100, 30);
@@ -116,7 +116,7 @@ public class SoccerFieldDetector extends GeneralDetector {
 	 * @param image: The image with the logo (Mat).
 	 * @return - Image without logo (Mat).
 	 */
-	private Mat removeLogo(Mat image) {
+	public Mat removeLogo(Mat image) {
 		Imgproc.rectangle(image, new Point(426, 1), new Point(637, 80), new Scalar(0), -1);
 		return image;
 	}
