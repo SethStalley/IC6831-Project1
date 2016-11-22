@@ -56,7 +56,7 @@ public class IntegrationTests {
 		SoccerFieldDetector sf = new SoccerFieldDetector();
 		sf.Detect(video.frames);
 		
-		Mat testDetect = sf.getProcessedFields().get(0);
+		Mat testDetect = sf.getProcessedFields().get(70);
 
 		assertEquals(compareMat(testDetect, detected), true);		
 	}	
@@ -71,14 +71,14 @@ public class IntegrationTests {
 			e.printStackTrace();
 		}
 		
-		Mat detected = Imgcodecs.imread(ROOT + "detectedP.png", Imgproc.COLOR_BGR2GRAY);
-		
 		PlayerDetector detector = new PlayerDetector();
 		detector.Detect(video.frames);
 		
 		Mat testDetect = detector.getProcessedPlayers().get(0);
-
-		assertEquals(compareMat(testDetect, detected), true);		
+		Mat detected = Imgcodecs.imread(ROOT + "detectedP.png", Imgproc.COLOR_BGR2GRAY);
+	
+	
+		assertEquals(true, compareMat(testDetect, detected));		
 	}
 	
 	@Test
@@ -92,6 +92,7 @@ public class IntegrationTests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		Mat finalMat = Imgcodecs.imread(ROOT + "final.png", Imgproc.COLOR_BGR2GRAY);
 		

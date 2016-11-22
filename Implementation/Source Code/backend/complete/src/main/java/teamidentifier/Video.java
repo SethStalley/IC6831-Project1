@@ -76,7 +76,7 @@ public class Video {
 
 		for (Mat mat : mats) {
 			videoWriter.write(mat);
-			mat.release();
+			//mat.release();
 		}
 		videoWriter.release();
 	}
