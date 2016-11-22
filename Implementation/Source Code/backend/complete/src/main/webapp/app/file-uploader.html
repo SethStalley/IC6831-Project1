@@ -31,9 +31,13 @@
                     <input type="file" ng2FileSelect [uploader]="groundTruthUploader" />
                     <button type="button" class="btn btn-success btn-xs"
                                 (click)="groundTruthUploader.queue[0].upload()">
-                            <span class="glyphicon glyphicon-upload"></span> Subir
+                            <span class="glyphicon glyphicon-upload"></span> Upload
                         </button>
+
+                    <br>
+                    <h4 *ngIf="result">Result: {{ result }} </h4>
                 </div>
+                
             </div>
 
             <table class="table">

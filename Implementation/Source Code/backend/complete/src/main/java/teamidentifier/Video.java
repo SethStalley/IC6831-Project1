@@ -42,7 +42,8 @@ public class Video {
 	public ArrayList<Mat> readVideo() throws FileNotFoundException {
 
 		ArrayList<Mat> frames = new ArrayList<Mat>();
-
+		
+		System.out.println(path);
 		VideoCapture cap = new VideoCapture(path);
 
 		if (!cap.isOpened()) {

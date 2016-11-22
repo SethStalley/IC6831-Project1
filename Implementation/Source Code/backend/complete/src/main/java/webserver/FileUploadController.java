@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 
 import static java.nio.file.StandardCopyOption.*;
 
+import org.opencv.imgcodecs.Imgcodecs;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +28,7 @@ public class FileUploadController {
 	String dir = System.getProperty("user.dir");
 	String ROOT = dir.substring(0, dir.lastIndexOf("backend")) + "backend/complete/src/main/webapp/videos";
 	
-	String videoPath;
+	static String videoPath = null;
 	
 	/**
 	 * Method handleFileUpload.
@@ -51,6 +52,7 @@ public class FileUploadController {
 				
 				// Process video for testing
 				proccessVideo(ROOT + '/' + file.getOriginalFilename());
+				
 			} catch (FileAlreadyExistsException e) {
 				message = "Archivo ya existe, cambie el nombre de archivo!";
 			} catch (IOException | RuntimeException e) {
@@ -77,17 +79,18 @@ public class FileUploadController {
 	public String handleGroundTruthFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
 		String message = "";
-
+		System.out.println("here");
 		if (!file.isEmpty()) {
 			try {
 
 				Files.copy(file.getInputStream(), Paths.get(ROOT, file.getOriginalFilename()), REPLACE_EXISTING);
-				message = "Se subio " + file.getOriginalFilename() + " de forma exitosa!";
-				if(this.videoPath != ""){
-					 compareWithGroundTruth(ROOT + '/' + file.getOriginalFilename());
+				
+				if (videoPath != null) {
+					System.out.println("Processing Ground Truth");
+					double result = compareWithGroundTruth(videoPath, ROOT + '/' + file.getOriginalFilename());
+					message = Double.toString(result);
 				}
-
-
+				
 			} catch (IOException | RuntimeException e) {
 				e.printStackTrace();
 				message = "Hubo un problema subiendo " + file.getOriginalFilename() + " => " + e.getMessage();
@@ -108,14 +111,13 @@ public class FileUploadController {
 	 */
 	private void proccessVideo(String videoPath) {
 		Video video = new Video(videoPath);
+		FileUploadController.videoPath = videoPath;
 
 		try {
 			video.readVideo();
 			video.segmentate();
 			video.writeVideo(video.frames, videoPath);
-			
-			//this.videoPath = videoPath;
-			
+		
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -123,11 +125,13 @@ public class FileUploadController {
 		}
 	}
 	
-	private void compareWithGroundTruth(String groundTruthPath){
+	private double compareWithGroundTruth(String videoPath, String groundTruthPath){
 		GroundTruth groundTruth = new GroundTruth();
-		if(this.videoPath != ""){
+		double diceIndex = 0.0;
+		if(videoPath != null){
 			try {
-				double diceIndex = groundTruth.compareWithGroundTruth(this.videoPath, groundTruthPath);
+				System.out.println(videoPath + "\n&&\n" + groundTruthPath);
+				diceIndex = groundTruth.compareWithGroundTruth(videoPath, groundTruthPath);
 				System.out.println("Promedio del indice Dice de los frames: " + diceIndex);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -135,6 +139,8 @@ public class FileUploadController {
 			}
 			
 		}
+		
+		return diceIndex;
 	}
 
 }

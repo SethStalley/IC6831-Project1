@@ -15,6 +15,7 @@ const GROUND_TRUTH_URL = 'http://localhost:8080/postGroundTruth';
 
 export class FileUploder {
   fileName:string;  
+  result:string;
   public uploader:FileUploader = new FileUploader({url: URL, method: 'showVide'});
   public groundTruthUploader:FileUploader = new FileUploader({url: GROUND_TRUTH_URL});
   public hasBaseDropZoneOver:boolean = false;
@@ -23,8 +24,17 @@ export class FileUploder {
      this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
           var fileName : string = item.some['name'];
           console.log(fileName);
-          this.setFileName(fileName)
+          this.setFileName(fileName);
      };
+
+     this.groundTruthUploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+          console.log(response);
+          this.setResult(response);
+     };
+  }
+
+  setResult(result:string) {
+    this.result = result;
   }
 
   fileOverBase(e:any):void {
